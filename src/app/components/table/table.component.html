@@ -37,8 +37,8 @@
                     {{ item.title }}
                 </th>
                 <td mat-cell *matCellDef="let row" (click)="editDataDialog(row)">
-                    <button mat-icon-button>
-                        <mat-icon>{{item.icon}}</mat-icon>
+                    <button mat-icon-button >
+                        <mat-icon [color]="item.color">{{item.icon}}</mat-icon>
                     </button>
                 </td>
             </ng-container>

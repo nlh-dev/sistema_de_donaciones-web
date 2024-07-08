@@ -27,8 +27,16 @@ export const columns: IColumns[] = [
         title: 'Editar',
         name: 'edit',
         type: 'icon',
-        icon: 'edit'
-    }
+        icon: 'edit',
+        color: 'primary'
+    },
+    {
+        title: 'Eliminar',
+        name: 'delete',
+        type: 'icon',
+        icon: 'delete',
+        color: 'warn'
+    },
 ]
 
 export const dataTable: IUsers[] = [
