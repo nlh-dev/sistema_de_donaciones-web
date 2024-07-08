@@ -25,10 +25,10 @@
             }
             @if (item.type == 'string') {
             <ng-container matColumnDef="{{ item.name }}">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header [class]="item.width">
                     {{ item.title }}
                 </th>
-                <td mat-cell *matCellDef="let row">{{ row[item.name] }}</td>
+                <td mat-cell *matCellDef="let row" [class]="item.width">{{ row[item.name] }}</td>
             </ng-container>
             }
             @if (item.type == 'icon') {

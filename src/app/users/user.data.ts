@@ -12,16 +12,19 @@ export const columns: IColumns[] = [
         title: 'Nombre',
         name: 'name',
         type: 'string',
+        width: 'w-[30%]'
     },
     {
         title: 'Apellido',
         name: 'lastname',
         type: 'string',
+        width: 'w-[30%]'
     },
     {
         title: 'Rol',
         name: 'rol',
         type: 'string',
+        width: 'w-[30%]'
     },
     {
         title: 'Editar',
