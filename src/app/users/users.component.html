@@ -1,1 +1,3 @@
-<p>users works!</p>,
+<h2>Tabla de usuarios</h2>
+
+<app-table [columns]="columns" [dataTable]="dataTable" (addNew)="openDialog()" (edit)="editDataDialog($event)"></app-table>

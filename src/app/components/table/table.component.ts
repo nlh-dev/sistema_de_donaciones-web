@@ -25,7 +25,7 @@ import { IColumns } from '../../interfaces/table.interface';
     MatButtonModule
   ],
   templateUrl: './table.component.html',
-  styleUrl: './table.component.css',
+  styleUrl: './table.component.scss',
 })
 export class TableComponent implements OnInit, AfterViewInit{
 
@@ -45,18 +45,22 @@ export class TableComponent implements OnInit, AfterViewInit{
   ngOnInit(): void {
     this.displayedColumns = this.columns.map(col => col.name);
     this.dataSource = new MatTableDataSource(this.dataTable);
+
+    
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes['dataTable']){
-      this.dataSource = new MatTableDataSource(this.dataTable);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    }
+    // if(changes['dataTable']){
+    //   this.dataSource = new MatTableDataSource(this.dataTable);
+    //   this.dataSource.paginator = this.paginator;
+    //   this.dataSource.sort = this.sort;
+    // }
   }
 
   ngAfterViewInit() {
     this.paginator._intl.itemsPerPageLabel = 'Elementos por pagina';
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
