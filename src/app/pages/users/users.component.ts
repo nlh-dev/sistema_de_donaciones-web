@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { TableComponent } from '../components/table/table.component';
-import { IColumns } from '../interfaces/table.interface';
+import { TableComponent } from '../../components/table/table.component';
+import { IColumns } from '../../interfaces/table.interface';
 import { columns, dataTable, formularioUser, IUsers } from './user.data';
 import { MatDialog } from '@angular/material/dialog';
-import { FormComponent } from '../components/form/form.component';
+import { FormComponent } from '../../components/form/form.component';
 
 @Component({
   selector: 'app-users',
@@ -16,7 +16,7 @@ import { FormComponent } from '../components/form/form.component';
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
 })
-export class UsersComponent { 
+export class UsersComponent {
   columns: IColumns[] = columns;
   dataTable: IUsers[] = dataTable;
 

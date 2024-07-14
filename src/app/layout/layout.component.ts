@@ -4,6 +4,7 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { IMenu } from '../interfaces/layout.interface';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import {MatDividerModule} from '@angular/material/divider';
 
 @Component({
   selector: 'app-layout',
@@ -12,7 +13,8 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     MatIconModule,
     RouterLink,
-    RouterOutlet
+    RouterOutlet,
+    MatDividerModule
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
@@ -22,7 +24,7 @@ export class LayoutComponent implements OnInit {
   menuLayout: IMenu[] = menuLayout;
   moduleActive: string = '';
 
-  classActive: string = classActive;
+  classActive: string = classInactive;
   classInactive: string = classInactive;
 
   router = inject(Router);

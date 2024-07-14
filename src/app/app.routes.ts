@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
-import { UsersComponent } from './users/users.component';
-import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { DonatesComponent } from './donates/donates.component';
+import { UsersComponent } from './pages/users/users.component';
+import { LoginComponent } from './pages/login/login.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { DonatesComponent } from './pages/donates/donates.component';
 
 export const routes: Routes = [
     {
@@ -24,7 +24,7 @@ export const routes: Routes = [
                 component: ProfileComponent
             },
             {
-                path: 'gestion-usuario',
+                path: 'usuario',
                 component: UsersComponent
             }
         ]

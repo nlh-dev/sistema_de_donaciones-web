@@ -1,5 +1,5 @@
-import { IDataForm, IFormulario } from "../interfaces/form.interface";
-import { IColumns } from "../interfaces/table.interface";
+import { IDataForm, IFormulario } from "../../interfaces/form.interface";
+import { IColumns } from "../../interfaces/table.interface";
 
 export interface IUsers {
     name: string;

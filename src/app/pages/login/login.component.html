@@ -1,0 +1,29 @@
+<div class="flex items-center justify-center w-full h-full">
+  <form
+    [formGroup]="loginForm"
+    class="flex flex-col items-center justify-center gap-2 p-8 rounded-lg bg-[#D9D9D9]"
+  >
+    <div class="logo">Logo</div>
+    <p>Inicio de sesion</p>
+
+    <label for=""> Nombre de usuario </label>
+    <input type="text" placeholder="Usuario" formControlName="username" />
+
+    <label> Contrasena </label>
+    <input
+      type="password"
+      placeholder="Contrasena"
+      formControlName="password"
+    />
+
+    @if(showMessageError){
+      <p class=" text-red-500">Usuario no encontrado.</p>
+    }
+
+    <button type="submit" (click)="onSubmitLogin()" [disabled]="!loginForm.valid">Ingresar</button>
+
+    <br>
+
+    <span class="text-sm">Copyright 2024 | Funcacion samaritana de Venezuela</span>
+  </form>
+</div>
