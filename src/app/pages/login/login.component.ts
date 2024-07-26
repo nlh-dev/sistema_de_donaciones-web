@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +12,10 @@ import { Router } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatIconModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -18,9 +24,11 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl('')
+    username: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
   });
+
+  showPassword: boolean = false;
 
   showMessageError: boolean = false;
 
@@ -28,19 +36,20 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Holis');
-
   }
 
 
   onSubmitLogin(): void {
-
     console.log(this.loginForm.value);
-
     if(this.loginForm.get('username')?.value == 'admin'){
       this.router.navigate(['/'])
     } else {
       this.showMessageError = true;
     }
+  }
+
+  show(): void {
+    this.showPassword = !this.showPassword;
   }
 
 }

@@ -1,29 +1,35 @@
-<div class="flex items-center justify-center w-full h-full">
-  <form
-    [formGroup]="loginForm"
-    class="flex flex-col items-center justify-center gap-2 p-8 rounded-lg bg-[#D9D9D9]"
-  >
+<div class="flex items-center justify-center w-full h-full relative">
+  <form [formGroup]="loginForm" class="flex flex-col items-center justify-center gap-2 p-8 rounded-2xl bg-[#D9D9D9] relative formFront">
     <div class="logo">Logo</div>
     <p>Inicio de sesion</p>
 
-    <label for=""> Nombre de usuario </label>
-    <input type="text" placeholder="Usuario" formControlName="username" />
+    <div class="flex flex-col items-start justify-start gap-2 w-[80%] m-auto my-2">
+      <label> Nombre de usuario </label>
+      <input type="text" placeholder="Usuario" formControlName="username" class="w-full py-2 px-3 rounded-lg" />
+    </div>
 
-    <label> Contrasena </label>
-    <input
-      type="password"
-      placeholder="Contrasena"
-      formControlName="password"
-    />
+    <div class="flex flex-col items-start justify-start gap-2 w-[80%] m-auto my-2">
+      <label> Contrasena </label>
+      <div class="flex items-center justify-between w-full rounded-lg bg-white">
+        <input [type]="showPassword ? 'text':'password'" placeholder="Contrasena" formControlName="password" class="py-2 px-3 rounded-lg appearance-none" />
+        <button mat-icon-button (click)="show()">
+          <mat-icon>{{showPassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </button>
+      </div>
+    </div>
 
     @if(showMessageError){
-      <p class=" text-red-500">Usuario no encontrado.</p>
+    <p class="text-red-500">Usuario no encontrado.</p>
     }
 
-    <button type="submit" (click)="onSubmitLogin()" [disabled]="!loginForm.valid">Ingresar</button>
+    <button type="submit" class="my-2 text-white bg-[#1C265F] rounded-3xl py-2 px-20 cursor-pointer disabled:cursor-default disabled:bg-[#c2c2c3] disabled:text-gray-500" (click)="onSubmitLogin()"
+      [disabled]="!loginForm.valid">
+      Ingresar
+    </button>
 
-    <br>
+    <div class="divider"></div>
 
-    <span class="text-sm">Copyright 2024 | Funcacion samaritana de Venezuela</span>
+    <span class="text-sm">Copyright 2024 | Fundación Samaritana de Venezuela</span>
+    <div class="backForm"></div>
   </form>
 </div>

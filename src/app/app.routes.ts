@@ -8,6 +8,10 @@ import { DonatesComponent } from './pages/donates/donates.component';
 
 export const routes: Routes = [
     {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
         path: '',
         component: LayoutComponent,
         children: [
@@ -28,10 +32,6 @@ export const routes: Routes = [
                 component: UsersComponent
             }
         ]
-    },
-    {
-        path: 'login',
-        component: LoginComponent
     },
     {
         path: '**', redirectTo: ''
