@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { DonatesComponent } from './pages/donates/donates.component';
+import { FormularioUsuarioComponent } from './pages/formulario-usuario/formulario-usuario.component';
 
 export const routes: Routes = [
     {
@@ -30,7 +31,15 @@ export const routes: Routes = [
             {
                 path: 'usuario',
                 component: UsersComponent
-            }
+            },
+            {
+                path: 'usuario/agregar',
+                component: FormularioUsuarioComponent
+            },
+            {
+                path: 'usuario/editar',
+                component: FormularioUsuarioComponent
+            },
         ]
     },
     {

@@ -9,6 +9,7 @@ import { Router, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { IColumns } from '../../interfaces/table.interface';
+import { BaseComponent } from '../../pages/base/base.component';
 
 @Component({
   selector: 'app-table',
@@ -27,10 +28,12 @@ import { IColumns } from '../../interfaces/table.interface';
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
 })
-export class TableComponent implements OnInit, AfterViewInit{
+export class TableComponent extends BaseComponent implements OnInit, AfterViewInit{
 
   @Input() columns: IColumns[] = [];
   @Input() dataTable: any[] = [];
+  @Input() title: string = '';
+  @Input() iconTitle: string = '';
 
   @Output() addNew = new EventEmitter<boolean>();
   @Output() edit = new EventEmitter<any>();
@@ -40,13 +43,14 @@ export class TableComponent implements OnInit, AfterViewInit{
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  router = inject(Router)
 
   ngOnInit(): void {
     this.displayedColumns = this.columns.map(col => col.name);
     this.dataSource = new MatTableDataSource(this.dataTable);
+  }
 
-    
+  styleHead(styles: string | undefined): string {
+    return `!bg-[#D9D9D9] ${styles}`
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -74,7 +78,6 @@ export class TableComponent implements OnInit, AfterViewInit{
 
   redirectLink(rowLink: any): void {
     console.log(rowLink.link);
-
     this.router.navigate([rowLink.link]);
   }
 

@@ -5,6 +5,7 @@ import { IMenu } from '../interfaces/layout.interface';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import {MatDividerModule} from '@angular/material/divider';
+import { InfoLayoutComponent } from '../components/info-layout/info-layout.component';
 
 @Component({
   selector: 'app-layout',
@@ -14,7 +15,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatIconModule,
     RouterLink,
     RouterOutlet,
-    MatDividerModule
+    MatDividerModule,
+    InfoLayoutComponent
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
@@ -23,6 +25,7 @@ import {MatDividerModule} from '@angular/material/divider';
 export class LayoutComponent implements OnInit {
   menuLayout: IMenu[] = menuLayout;
   moduleActive: string = '';
+  nameUser: string = 'Hector Navarro';
 
   classActive: string = classInactive;
   classInactive: string = classInactive;
@@ -41,5 +44,10 @@ export class LayoutComponent implements OnInit {
       this.moduleActive = findMenuActive.title;
       findMenuActive.class = this.classActive;
     }
+  }
+
+
+  logout(): void {
+    this.router.navigate(['/login']);
   }
 }

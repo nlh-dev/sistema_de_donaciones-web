@@ -1,0 +1,21 @@
+<div class="w-full flex items-center justify-between h-[12rem]">
+    <div class="flex items-center justify-start">
+        <span class="material-icons-outlined text-9xl text-[#1C265F]">directions_run</span>
+        <div>
+            <p class="w-[15rem] text-gray-600 text-xl">Fundacion Samaritana de Venezuela</p>
+            <span class="text-gray-400">Dashboard / </span> <span class="text-[#1C265F] font-medium">{{moduleActive}}</span>
+        </div>
+    </div>
+
+    <div class="flex items-start justify-center gap-5 py-4 w-[30%] h-full">
+        <button class="bg-[#E6E0E9] rounded-full h-14 w-14 flex items-center justify-center">
+            <span class="material-icons-outlined text-5xl text-[#1C265F]">person</span>
+        </button>
+        <button class="bg-[#E6E0E9] rounded-full h-14 w-14 flex items-center justify-center">
+            <span [matBadge]="countNotification" matBadgeSize="large" matBadgeColor="warn" class="material-icons-outlined text-4xl text-[#1C265F]">notifications</span>
+        </button>
+        <button class="bg-[#E6E0E9] rounded-full h-14 w-14 flex items-center justify-center">
+            <span class="material-icons-outlined text-4xl text-[#1C265F]">settings</span>
+        </button>
+    </div>
+</div>
