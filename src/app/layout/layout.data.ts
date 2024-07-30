@@ -34,7 +34,7 @@ export const menuLayout: IMenu[] = [
   {
     title: 'Almacen',
     redirect: '/almacen',
-    icon: 'warehouse',
+    icon: 'inbox',
     class: ''
   },
   {
