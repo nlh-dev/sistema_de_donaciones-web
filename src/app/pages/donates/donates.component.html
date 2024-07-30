@@ -1,1 +1,7 @@
-<p>donates works!</p>,
+<app-table 
+[iconTitle]="'import_contacts'" 
+[title]="title" 
+[columns]="columns" 
+[dataTable]="dataTable" 
+(addNew)="openDialog()" 
+(edit)="editDataDialog($event)"></app-table>

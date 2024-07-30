@@ -18,14 +18,11 @@ import { TableComponent } from '../../components/table/table.component';
   styleUrl: './store.component.scss',
 })
 export class StoreComponent extends BaseComponent implements OnInit { 
-
-  almacenService = inject(AlmacenService);
-
   columns: IColumns<IAlmacen>[] = columns;
   dataTable: IAlmacen[] = [];
-  title: string = 'Lista de Almacenes';
-
-  ref = inject(ChangeDetectorRef)
+  title: string = 'Lista de Insumos';
+  almacenService = inject(AlmacenService);
+  ref = inject(ChangeDetectorRef);
 
   constructor(){
     super();

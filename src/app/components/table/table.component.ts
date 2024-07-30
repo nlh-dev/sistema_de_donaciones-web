@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { IColumns } from '../../interfaces/table.interface';
 import { BaseComponent } from '../../pages/base/base.component';
+import { FormatDatePipe } from '../../pipes/FormatDate.pipe';
 
 @Component({
   selector: 'app-table',
@@ -23,7 +24,8 @@ import { BaseComponent } from '../../pages/base/base.component';
     MatPaginatorModule,
     RouterLink,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    FormatDatePipe
   ],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',

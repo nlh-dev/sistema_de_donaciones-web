@@ -1,6 +1,6 @@
 export interface IColumns<T> {
     title: string;
-    name: (element: T) => string | number;
+    name: (element: T) => string | number | Date;
     nameColumn: string;
     type: typesColumns;
     width?: string;
@@ -9,4 +9,4 @@ export interface IColumns<T> {
     color?: string;
 }
 
-export type typesColumns = 'string' | 'links' | 'icon';
+export type typesColumns = 'string' | 'icon' | 'date';

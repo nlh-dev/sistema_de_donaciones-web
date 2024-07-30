@@ -17,6 +17,13 @@ export const columns: IColumns<IUser>[] = [
         width: 'w-[30%]'
     },
     {
+        title: 'Usuario',
+        name: (element) => element.usuario,
+        nameColumn: 'usuario',
+        type: 'string',
+        width: 'w-[30%]'
+    },
+    {
         title: 'Rol',
         name: (element) => element.users_roles.roles_nombre,
         nameColumn: 'roles_nombre',
