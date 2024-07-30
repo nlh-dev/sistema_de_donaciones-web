@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class BaseComponent {
   router = inject(Router);
-  location = inject(Location)
+  location = inject(Location);
 
   goBack(): void {
     this.location.back();

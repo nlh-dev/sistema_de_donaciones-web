@@ -6,6 +6,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { DonatesComponent } from './pages/donates/donates.component';
 import { FormularioUsuarioComponent } from './pages/formulario-usuario/formulario-usuario.component';
+import { StoreComponent } from './pages/store/store.component';
 
 export const routes: Routes = [
     {
@@ -27,6 +28,10 @@ export const routes: Routes = [
             {
                 path: 'perfil',
                 component: ProfileComponent
+            },
+            {
+                path: 'almacen',
+                component: StoreComponent
             },
             {
                 path: 'usuario',

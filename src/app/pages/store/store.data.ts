@@ -1,25 +1,25 @@
+import { IAlmacen } from "../../interfaces/almacen.interface";
 import { IColumns } from "../../interfaces/table.interface";
-import { IUser } from "../../interfaces/users.interface";
 
-export const columns: IColumns<IUser>[] = [
+export const columns: IColumns<IAlmacen>[] = [
     {
         title: 'Nombre',
-        name: (element) => element.nombre,
-        nameColumn: 'nombre',
+        name: (element) => element.almacen_nombre,
+        nameColumn: 'almacen_nombre',
         type: 'string',
         width: 'w-[30%]'
     },
     {
-        title: 'Apellido',
-        name: (element) => element.apellido,
-        nameColumn: 'apellido',
+        title: 'Tipo de almacen',
+        name: (element) => element.donaciones_tipos.tipo_donaciones_nombre,
+        nameColumn: 'tipo_donaciones_nombre',
         type: 'string',
         width: 'w-[30%]'
     },
     {
-        title: 'Rol',
-        name: (element) => element.users_roles.roles_nombre,
-        nameColumn: 'roles_nombre',
+        title: 'Cantidad',
+        name: (element) => element.almacen_cantidad,
+        nameColumn: 'almacen_cantidad',
         type: 'string',
         width: 'w-[30%]'
     },

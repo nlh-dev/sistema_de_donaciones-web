@@ -4,7 +4,11 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-import { Router } from '@angular/router';
+import { BaseComponent } from '../base/base.component';
+import { AuthService } from '../../services/auth.service';
+import { ILogin, IResponseLogin } from '../../interfaces/users.interface';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-login',
@@ -21,31 +25,39 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends BaseComponent implements OnInit {
 
   loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required]),
+    usuario: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required])
   });
 
+  constructor(private _snackBar: MatSnackBar) {
+    super()
+  }
+
   showPassword: boolean = false;
-
-  showMessageError: boolean = false;
-
-  router = inject(Router);
+  authService = inject(AuthService);
 
   ngOnInit(): void {
-    console.log('Holis');
+    
   }
 
 
   onSubmitLogin(): void {
-    console.log(this.loginForm.value);
-    if(this.loginForm.get('username')?.value == 'admin'){
-      this.router.navigate(['/'])
-    } else {
-      this.showMessageError = true;
-    }
+    this.authService.httpClient.post<IResponseLogin>(`${this.authService.base_api_url}/auth`, this.loginForm.value as ILogin).subscribe((response: IResponseLogin) => {
+      if(response.success == true){
+        localStorage.setItem('user', JSON.stringify(response.userAuthenticate));
+        setTimeout(() => {
+          this.router.navigate(['/'])
+        }, 3000);
+      }
+
+      this._snackBar.openFromComponent(SnackbarComponent, {
+        duration: 3000,
+        data: response
+      })
+    })
   }
 
   show(): void {

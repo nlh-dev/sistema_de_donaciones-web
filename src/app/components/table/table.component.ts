@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild, inject } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -28,9 +28,9 @@ import { BaseComponent } from '../../pages/base/base.component';
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
 })
-export class TableComponent extends BaseComponent implements OnInit, AfterViewInit{
+export class TableComponent extends BaseComponent implements OnInit, AfterViewInit, OnChanges{
 
-  @Input() columns: IColumns[] = [];
+  @Input() columns: IColumns<any>[] = [];
   @Input() dataTable: any[] = [];
   @Input() title: string = '';
   @Input() iconTitle: string = '';
@@ -38,6 +38,7 @@ export class TableComponent extends BaseComponent implements OnInit, AfterViewIn
   @Output() addNew = new EventEmitter<boolean>();
   @Output() edit = new EventEmitter<any>();
 
+  // ref = inject(ChangeDetectorRef)
   displayedColumns: string[] = [];
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
 
@@ -45,8 +46,8 @@ export class TableComponent extends BaseComponent implements OnInit, AfterViewIn
   @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit(): void {
-    this.displayedColumns = this.columns.map(col => col.name);
-    this.dataSource = new MatTableDataSource(this.dataTable);
+    this.displayedColumns = this.columns.map(col => col.nameColumn);
+    // this.dataSource = new MatTableDataSource([]);
   }
 
   styleHead(styles: string | undefined): string {
@@ -54,11 +55,11 @@ export class TableComponent extends BaseComponent implements OnInit, AfterViewIn
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // if(changes['dataTable']){
-    //   this.dataSource = new MatTableDataSource(this.dataTable);
-    //   this.dataSource.paginator = this.paginator;
-    //   this.dataSource.sort = this.sort;
-    // }
+    if(changes['dataTable']){
+      this.dataSource = new MatTableDataSource(this.dataTable);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }
   }
 
   ngAfterViewInit() {

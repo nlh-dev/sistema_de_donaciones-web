@@ -1,6 +1,7 @@
-export interface IColumns {
+export interface IColumns<T> {
     title: string;
-    name: string;
+    name: (element: T) => string | number;
+    nameColumn: string;
     type: typesColumns;
     width?: string;
     link?: string;
