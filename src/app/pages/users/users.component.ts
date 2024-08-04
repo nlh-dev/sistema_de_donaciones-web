@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, effect, inject, OnInit } from '@angular/core';
 import { TableComponent } from '../../components/table/table.component';
-import { IColumns } from '../../interfaces/table.interface';
+import { IColumns, ISendDataTable } from '../../interfaces/table.interface';
 import { columns } from './user.data';
 import { BaseComponent } from '../base/base.component';
 import { UsersService } from '../../services/users.service';
@@ -37,6 +37,18 @@ export class UsersComponent extends BaseComponent implements OnInit{
     this.usersService.getUsersAPI();
   }
 
+  defectColumnAction(dataComponent: ISendDataTable): void {
+    if(dataComponent.action == 'add'){
+      this.openDialog();
+    }
+    if(dataComponent.action == 'edit'){
+      this.editDataDialog(dataComponent.data);
+    }
+    if(dataComponent.action == 'delete'){
+      this.deleteData(dataComponent.data);
+    }
+  }
+
   openDialog(): void {
     this.router.navigate(['/usuario/agregar'])
   }
@@ -44,5 +56,9 @@ export class UsersComponent extends BaseComponent implements OnInit{
   editDataDialog(data: IUser): void {
     localStorage.setItem('userEdit', JSON.stringify(data));
     this.router.navigate(['/usuario/editar'])
+  }
+
+  deleteData(data: IUser): void {
+    this.usersService.deleteUsersAPI(data.users_ID.toString());
   }
 }

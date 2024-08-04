@@ -18,3 +18,14 @@ export interface IInsumosEstado {
     insumo_estado_id:     number;
     insumo_estado_nombre: string;
 }
+
+export interface IBodyAlmacen {
+    almacenNombre: string;
+    almacenCantidad:number;
+    almacenTipo:number;
+    almacenEstado:number;
+    almacenFechaExpiracion: Date;
+}
+export interface IBodyAlmacenEdit extends IBodyAlmacen {
+    almacenId:number;
+}

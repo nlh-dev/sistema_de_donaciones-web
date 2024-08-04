@@ -7,6 +7,7 @@ import { NotificationsComponent } from './pages/notifications/notifications.comp
 import { DonatesComponent } from './pages/donates/donates.component';
 import { FormularioUsuarioComponent } from './pages/formulario-usuario/formulario-usuario.component';
 import { StoreComponent } from './pages/store/store.component';
+import { FormularioStoreComponent } from './pages/formulario-store/formulario-store.component';
 
 export const routes: Routes = [
     {
@@ -32,6 +33,14 @@ export const routes: Routes = [
             {
                 path: 'almacen',
                 component: StoreComponent
+            },
+            {
+                path: 'almacen/agregar',
+                component: FormularioStoreComponent
+            },
+            {
+                path: 'almacen/editar',
+                component: FormularioStoreComponent
             },
             {
                 path: 'usuario',

@@ -10,3 +10,11 @@ export interface IColumns<T> {
 }
 
 export type typesColumns = 'string' | 'icon' | 'date';
+
+
+export interface ISendDataTable {
+    data: any;
+    action: TypeActions;
+}
+
+export type TypeActions = 'add' | 'edit' | 'delete' | 'show';

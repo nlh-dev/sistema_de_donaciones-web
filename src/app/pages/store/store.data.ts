@@ -25,7 +25,7 @@ export const columns: IColumns<IAlmacen>[] = [
     },
     {
         title: 'Estado',
-        name: () => 'Estado',
+        name: (element) => element.insumos_estado.insumo_estado_nombre,
         nameColumn: 'estado',
         type: 'string',
         width: 'w-[20%]'

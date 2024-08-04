@@ -25,10 +25,13 @@ export interface IUsersRoles {
     roles_nombre: string;
 }
 
-export interface IUserForm {
+export interface IBodyUser {
     nombre: string;
     apellido: string;
     usuario: string;
+    usersRoleId : number;
     password: string;
-    usersRoleId: number;
+}
+export interface IBodyUserEdit extends IBodyUser {
+    idUsers: number;
 }

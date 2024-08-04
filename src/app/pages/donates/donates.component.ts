@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, effect, inject, OnInit } from '@angular/core';
 import { DonacionesService } from '../../services/donaciones.service';
 import { BaseComponent } from '../base/base.component';
-import { IColumns } from '../../interfaces/table.interface';
+import { IColumns, ISendDataTable } from '../../interfaces/table.interface';
 import { columns } from './donates.data';
 import { IDonations } from '../../interfaces/donates.interface';
 import { TableComponent } from '../../components/table/table.component';
@@ -34,6 +34,18 @@ export class DonatesComponent extends BaseComponent implements OnInit{
 
   ngOnInit(): void {
     this.donacionesServices.getDonacionesAPI();
+  }
+
+  defectColumnAction(dataComponent: ISendDataTable): void {
+    if(dataComponent.action == 'add'){
+      this.openDialog();
+    }
+    if(dataComponent.action == 'edit'){
+      this.editDataDialog(dataComponent.data);
+    }
+    // if(dataComponent.action == 'delete'){
+    //   this.deleteData(dataComponent.data);
+    // }
   }
 
   openDialog(): void {

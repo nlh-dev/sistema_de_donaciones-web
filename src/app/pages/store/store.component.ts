@@ -4,7 +4,7 @@ import { AlmacenService } from '../../services/almacen.service';
 import { BaseComponent } from '../base/base.component';
 import { IAlmacen } from '../../interfaces/almacen.interface';
 import { columns } from './store.data';
-import { IColumns } from '../../interfaces/table.interface';
+import { IColumns, ISendDataTable } from '../../interfaces/table.interface';
 import { TableComponent } from '../../components/table/table.component';
 
 @Component({
@@ -36,12 +36,27 @@ export class StoreComponent extends BaseComponent implements OnInit {
     this.almacenService.getAlmacenAPI();
   }
 
+  defectColumnAction(dataComponent: ISendDataTable): void {
+    if(dataComponent.action == 'add'){
+      this.openDialog();
+    }
+    if(dataComponent.action == 'edit'){
+      this.editDataDialog(dataComponent.data);
+    }
+    if(dataComponent.action == 'delete'){
+      this.deleteData(dataComponent.data);
+    }
+  }
+
   openDialog(): void {
-    this.router.navigate(['/usuario/agregar'])
+    this.router.navigate(['/almacen/agregar'])
   }
 
   editDataDialog(data: IAlmacen): void {
-    localStorage.setItem('userEdit', JSON.stringify(data));
-    this.router.navigate(['/usuario/editar'])
+    localStorage.setItem('storeEdit', JSON.stringify(data));
+    this.router.navigate(['/almacen/editar'])
+  }
+  deleteData(data: IAlmacen): void {
+    this.almacenService.deleteAlmacenAPI(data.almacen_id.toString());
   }
 }

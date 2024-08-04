@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import {MatDividerModule} from '@angular/material/divider';
 import { InfoLayoutComponent } from '../components/info-layout/info-layout.component';
+import { UsersService } from '../services/users.service';
+import { IUser } from '../interfaces/users.interface';
 
 @Component({
   selector: 'app-layout',
@@ -24,16 +26,24 @@ import { InfoLayoutComponent } from '../components/info-layout/info-layout.compo
 })
 export class LayoutComponent implements OnInit {
   menuLayout: IMenu[] = menuLayout;
-  moduleActive: string = '';
+  moduleActive: IMenu = {} as IMenu;
   nameUser: string = 'Hector Navarro';
 
   classActive: string = classInactive;
   classInactive: string = classInactive;
 
   router = inject(Router);
+  userService = inject(UsersService);
 
   ngOnInit(): void {
-    this.setClassList(this.router.url)
+    this.setClassList(this.router.url);
+    const getUser: IUser | null = this.userService.getUserLocal();
+
+    if(!getUser){
+      this.router.navigate(['/login']);
+    }else {
+      this.nameUser = `${getUser.nombre} ${getUser.apellido}`
+    }
   }
 
   setClassList(menuUrl: string): void {
@@ -41,14 +51,13 @@ export class LayoutComponent implements OnInit {
     const findMenuActive = this.menuLayout.find(list => list.redirect == menuUrl);
 
     if(findMenuActive){
-      this.moduleActive = findMenuActive.title;
+      this.moduleActive = findMenuActive;
       findMenuActive.class = this.classActive;
     }
   }
 
-
   logout(): void {
-    localStorage.removeItem('user');
+    localStorage.removeItem('userToken');
     this.router.navigate(['/login']);
   }
 }

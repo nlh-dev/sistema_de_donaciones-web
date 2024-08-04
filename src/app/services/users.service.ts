@@ -1,6 +1,6 @@
 import { computed, Injectable, signal } from '@angular/core';
 import { BaseService } from './base.service';
-import { IUser, IUserForm } from '../interfaces/users.interface';
+import { IBodyUser, IBodyUserEdit, IUser, IUsersRoles } from '../interfaces/users.interface';
 import { BaseResponse } from '../interfaces/base.interface';
 
 @Injectable({
@@ -11,27 +11,39 @@ export class UsersService extends BaseService{
   private setUsers = signal<IUser[]>([]);
   public getUsers = computed<IUser[]>(() => this.setUsers());
 
+  private setRoles = signal<IUsersRoles[]>([]);
+  public getRoles = computed<IUsersRoles[]>(() => this.setRoles());
+
+  getUserLocal(): IUser | null {
+    return JSON.parse(localStorage.getItem('userToken') as string);
+  }
+
   getUsersAPI(): void {
     this.httpClient.get<IUser[]>(`${this.base_api_url}/users`).subscribe((response: IUser[]) => {
       this.setUsers.set(response);
     })
-  }
 
-  postUsersAPI(users: IUserForm): void {
-    this.httpClient.post<BaseResponse>(`${this.base_api_url}/users`, users).subscribe((response: BaseResponse) => {
-      console.log(response);
-      this.getUsersAPI();
+  }
+  getRolesAPI(): void {
+    this.httpClient.get<IUsersRoles[]>(`${this.base_api_url}/users/roles`).subscribe((response: IUsersRoles[]) => {
+      this.setRoles.set(response);
     })
   }
-  putUsersAPI(users: IUserForm): void {
+
+  postUsersAPI(users: IBodyUser): void {
+    users.usersRoleId = Number(users.usersRoleId);
+    this.httpClient.post<BaseResponse>(`${this.base_api_url}/users`, users).subscribe((response: BaseResponse) => {
+      // console.log(response);
+    })
+  }
+  putUsersAPI(users: IBodyUserEdit): void {
+    users.usersRoleId = Number(users.usersRoleId);
     this.httpClient.put<BaseResponse>(`${this.base_api_url}/users`, users).subscribe((response: BaseResponse) => {
-      console.log(response);
-      this.getUsersAPI();
+      // console.log(response);
     })
   }
   deleteUsersAPI(userId: string): void {
     this.httpClient.delete<BaseResponse>(`${this.base_api_url}/users/${userId}`).subscribe((response: BaseResponse) => {
-      console.log(response);
       this.getUsersAPI();
     })
   }

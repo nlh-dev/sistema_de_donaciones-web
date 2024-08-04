@@ -3,4 +3,5 @@ export interface IMenu {
     redirect: string;
     icon: string;
     class: string;
+    footerText: string;
 }

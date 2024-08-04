@@ -8,7 +8,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Router, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { IColumns } from '../../interfaces/table.interface';
+import { IColumns, ISendDataTable, TypeActions } from '../../interfaces/table.interface';
 import { BaseComponent } from '../../pages/base/base.component';
 import { FormatDatePipe } from '../../pipes/FormatDate.pipe';
 
@@ -37,8 +37,7 @@ export class TableComponent extends BaseComponent implements OnInit, AfterViewIn
   @Input() title: string = '';
   @Input() iconTitle: string = '';
 
-  @Output() addNew = new EventEmitter<boolean>();
-  @Output() edit = new EventEmitter<any>();
+  @Output() sendData = new EventEmitter<ISendDataTable>();
 
   // ref = inject(ChangeDetectorRef)
   displayedColumns: string[] = [];
@@ -85,10 +84,10 @@ export class TableComponent extends BaseComponent implements OnInit, AfterViewIn
   }
 
   openDialog(): void {
-    this.addNew.emit(true)
+    this.sendData.emit({data: null,action: 'add'})
   }
 
-  editDataDialog(data: any): void {
-    this.edit.emit(data)
+  editDataDialog(data: any, actionColumn: string): void {
+    this.sendData.emit({data: data, action: actionColumn as TypeActions})
   }
 }

@@ -1,0 +1,75 @@
+<button class="flex items-center justify-between bg-[#1C265F] text-white py-2 px-4 rounded-full gap-2"
+    (click)="goBackForm()">
+    <mat-icon>arrow_back</mat-icon>
+    <span class="pr-2">Volver</span>
+</button>
+
+<div class="flex items-start justify-between w-full h-full gap-5 mt-5">
+    <div class=" bg-[#D9D9D9] rounded-xl h-full w-[80%] p-4">
+        <div class="flex items-center justify-start my-4 ml-4 gap-2 text-4xl text-[#646464]">
+            <span class="material-icons-outlined text-5xl">note_add</span>
+            <span class="pr-2">Añadir Insumo(s)</span>
+        </div>
+
+        <form [formGroup]="formStore" class="flex flex-wrap justify-start items-start w-full">
+            <div class="flex flex-col items-start justify-start gap-2 w-[60%] m-auto my-2">
+                <label> Nombre del Insumo </label>
+                <input type="text" formControlName="almacenNombre" class="w-full py-2 px-3 rounded-lg" />
+            </div>
+            <div class="flex flex-col items-start justify-start gap-2 w-[30%] m-auto my-2">
+                <label> Cantidad </label>
+                <input type="number" formControlName="almacenCantidad" class="w-full py-2 px-3 rounded-lg" />
+            </div>
+
+            <div class="flex flex-col items-start justify-start gap-2 w-[45%] m-auto my-2 ml-6">
+                <label> Tipo de Insumo </label>
+                <select formControlName="almacenTipo" class="w-full py-2 px-3 rounded-lg">
+                    @for (item of tiposData; track $index) {
+                    <option [value]="item.tipo_donaciones_id">{{item.tipo_donaciones_nombre}}</option>
+                    }
+                    @empty {
+                    <option value="">Cargando...</option>
+                    }
+                    <option value="0" style="display: none;"></option>
+                </select>
+            </div>
+            <div class="flex flex-col items-start justify-start gap-2 w-[45%] m-auto my-2">
+                <label> Estado del Insumo </label>
+                <select formControlName="almacenEstado" class="w-full py-2 px-3 rounded-lg">
+                    @for (item of estadosData; track $index) {
+                    <option [value]="item.insumo_estado_id">{{item.insumo_estado_nombre}}</option>
+                    }
+                    @empty {
+                    <option value="">Cargando...</option>
+                    }
+                    <option value="0" style="display: none;"></option>
+                </select>
+            </div>
+            <div class="flex items-center justify-start w-full ml-6">
+                <div class="flex flex-col items-start justify-start gap-2 w-[80%] my-2">
+                    <label> Fecha de expiración </label>
+
+                    <mat-form-field appearance="outline">
+                        <input formControlName="almacenFechaExpiracion" matInput [matDatepicker]="picker">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+
+        <div class="flex items-center justify-end w-full gap-4 mt-4">
+            <button class="flex items-center justify-between bg-[#B3261E] text-white py-2 px-4 rounded-full gap-2"
+                (click)="goBackForm()">
+                <mat-icon>cancel</mat-icon>
+                <span class="pr-2">Cancelar</span>
+            </button>
+
+            <button class="flex items-center justify-between bg-[#1C265F] text-white py-2 px-4 rounded-full gap-2"
+                (click)="sendFormData()">
+                <mat-icon>save</mat-icon>
+                <span class="pr-2">Guardar</span>
+            </button>
+        </div>
+    </div>
+</div>

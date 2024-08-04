@@ -5,43 +5,50 @@ export const menuLayout: IMenu[] = [
     title: 'Inicio',
     redirect: '/',
     icon: 'home',
-    class: ''
+    class: '',
+    footerText: 'Pagina Principal'
   },
   {
     title: 'Perfil',
     redirect: '/perfil',
     icon: 'person',
-    class: ''
+    class: '',
+    footerText: 'Configuración de Perfil'
   },
   {
     title: 'separador',
     redirect: '',
     icon: '',
-    class: ''
+    class: '',
+    footerText: ''
   },
   {
     title: 'Donaciones',
     redirect: '/donaciones',
     icon: 'bloodtype',
-    class: ''
+    class: '',
+    footerText: 'Historial de Donaciones'
   },
   {
     title: 'Solicitudes',
     redirect: '/notificaciones',
     icon: 'mail',
-    class: ''
+    class: '',
+    footerText: 'Gestión de Solicitudes'
   },
   {
     title: 'Almacen',
     redirect: '/almacen',
     icon: 'inbox',
-    class: ''
+    class: '',
+    footerText: 'Gestión de Insumos'
   },
   {
     title: 'Usuario',
     redirect: '/usuario',
     icon: 'group',
-    class: ''
+    class: '',
+    footerText: 'Gestión de Usuarios'
   }
 ];
 
