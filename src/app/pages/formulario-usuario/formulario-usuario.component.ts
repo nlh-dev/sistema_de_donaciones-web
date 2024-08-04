@@ -32,6 +32,8 @@ export class FormularioUsuarioComponent extends BaseComponent implements OnInit,
   })
   rolesData: IUsersRoles[] = [];
 
+  titleForm: string = 'Añadir Usuario';
+
   userService = inject(UsersService);
   ref = inject(ChangeDetectorRef);
 
@@ -48,6 +50,7 @@ export class FormularioUsuarioComponent extends BaseComponent implements OnInit,
       this.userService.getRolesAPI();
       this.dataUserEdit = JSON.parse(localStorage.getItem('userEdit') as string);
       if(this.router.url.includes('editar') && this.dataUserEdit){
+        this.titleForm = 'Editar Usuario';
         this.formUser.controls.nombre.setValue(this.dataUserEdit.nombre);
         this.formUser.controls.apellido.setValue(this.dataUserEdit.apellido);
         this.formUser.controls.usuario.setValue(this.dataUserEdit.usuario);

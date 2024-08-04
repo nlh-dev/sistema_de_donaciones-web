@@ -40,6 +40,8 @@ export class FormularioStoreComponent extends BaseComponent implements OnInit, O
   tiposData: IDonacionesTipos[] = [];
   estadosData: IInsumosEstado[] = [];
 
+  titleForm: string = 'Añadir Insumo(s)';
+
   almacenService = inject(AlmacenService);
   donacionesService = inject(DonacionesService);
   ref = inject(ChangeDetectorRef);
@@ -61,6 +63,7 @@ export class FormularioStoreComponent extends BaseComponent implements OnInit, O
     this.dataStoreEdit = JSON.parse(localStorage.getItem('storeEdit') as string);
 
     if (this.router.url.includes('editar') && this.dataStoreEdit) {
+      this.titleForm = 'Editar Insumo(s)';
       this.formStore.controls.almacenNombre.setValue(this.dataStoreEdit.almacen_nombre);
       this.formStore.controls.almacenCantidad.setValue(this.dataStoreEdit.almacen_cantidad);
       this.formStore.controls.almacenTipo.setValue(this.dataStoreEdit.almacen_tipo);
