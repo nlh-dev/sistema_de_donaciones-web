@@ -31,7 +31,7 @@ export const menuLayout: IMenu[] = [
   },
   {
     title: 'Solicitudes',
-    redirect: '/notificaciones',
+    redirect: '/solicitudes',
     icon: 'mail',
     class: '',
     footerText: 'Gestión de Solicitudes'

@@ -1,0 +1,12 @@
+<!-- <button class="flex items-center justify-between bg-[#1C265F] hover:bg-[#2235a0] delay-100 text-white py-2 px-4 rounded-full gap-2" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+    <span class="pr-2">Volver</span>
+</button> -->
+
+<app-table 
+[iconTitle]="'mail'" 
+[title]="title" 
+[columns]="columns" 
+[dataTable]="dataTable" 
+(sendData)="defectColumnAction($event)"
+></app-table>

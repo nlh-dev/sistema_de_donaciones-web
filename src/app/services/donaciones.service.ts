@@ -9,6 +9,9 @@ export class DonacionesService extends BaseService {
   private setDonaciones = signal<IDonations[]>([]);
   public getDonaciones = computed<IDonations[]>(() => this.setDonaciones());
 
+  private setOneDonaciones = signal<IDonations>({} as IDonations);
+  public getOneDonaciones = computed<IDonations>(() => this.setOneDonaciones());
+
   private setTipos = signal<IDonacionesTipos[]>([]);
   public getTipos = computed<IDonacionesTipos[]>(() => this.setTipos());
 
@@ -18,6 +21,12 @@ export class DonacionesService extends BaseService {
   getDonacionesAPI(): void {
     this.httpClient.get<IDonations[]>(`${this.base_api_url}/donaciones`).subscribe((response: IDonations[]) => {
         this.setDonaciones.set(response);
+      });
+  }
+
+  getUniqueDonacionesAPI(idDonation: string): void {
+    this.httpClient.get<IDonations>(`${this.base_api_url}/donaciones/${idDonation}`).subscribe((response: IDonations) => {
+        this.setOneDonaciones.set(response);
       });
   }
 

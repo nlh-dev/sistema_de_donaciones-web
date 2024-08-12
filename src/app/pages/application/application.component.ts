@@ -1,27 +1,29 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, effect, inject, OnInit } from '@angular/core';
-import { DonacionesService } from '../../services/donaciones.service';
+import { MatIcon } from '@angular/material/icon';
 import { BaseComponent } from '../base/base.component';
-import { IColumns, ISendDataTable } from '../../interfaces/table.interface';
-import { columns } from './donates.data';
-import { IDonations } from '../../interfaces/donates.interface';
 import { TableComponent } from '../../components/table/table.component';
+import { IColumns, ISendDataTable } from '../../interfaces/table.interface';
+import { columns } from './application.data';
+import { DonacionesService } from '../../services/donaciones.service';
+import { IDonations } from '../../interfaces/donates.interface';
 
 @Component({
-  selector: 'app-donates',
+  selector: 'app-application',
   standalone: true,
   imports: [
     CommonModule,
+    MatIcon,
     TableComponent
   ],
-  templateUrl: './donates.component.html',
-  styleUrl: './donates.component.scss',
+  templateUrl: './application.component.html',
+  styleUrl: './application.component.scss',
 })
-export class DonatesComponent extends BaseComponent implements OnInit{
+export class ApplicationComponent extends BaseComponent implements OnInit{
   columns: IColumns<IDonations>[] = columns;
   dataTable: IDonations[] = [];
-  title: string = 'Lista de Donaciones';
-  ref = inject(ChangeDetectorRef);
+  title: string = 'Lista de Solicitudes';
+  ref = inject(ChangeDetectorRef)
   donacionesServices = inject(DonacionesService)
 
   constructor(){
@@ -37,20 +39,13 @@ export class DonatesComponent extends BaseComponent implements OnInit{
   }
 
   defectColumnAction(dataComponent: ISendDataTable): void {
-    if(dataComponent.action == 'add'){
-      this.openDialog();
-    }
-    if(dataComponent.action == 'edit'){
+    if(dataComponent.action == 'show'){
       this.editDataDialog(dataComponent.data);
     }
   }
 
-  openDialog(): void {
-    this.router.navigate(['/donaciones/agregar'])
-  }
-
-  editDataDialog(data: IDonations): void {
-    localStorage.setItem('userEdit', JSON.stringify(data));
-    this.router.navigate(['/donaciones/editar'])
+  editDataDialog(data: IDonations ): void {
+    localStorage.setItem('application', JSON.stringify(data));
+    this.router.navigate([`/solicitud/${data.donaciones_ID}`])
   }
 }

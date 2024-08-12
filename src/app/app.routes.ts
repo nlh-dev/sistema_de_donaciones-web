@@ -9,6 +9,8 @@ import { FormularioUsuarioComponent } from './pages/formulario-usuario/formulari
 import { StoreComponent } from './pages/store/store.component';
 import { FormularioStoreComponent } from './pages/formulario-store/formulario-store.component';
 import { FormularioDonatesComponent } from './pages/formulario-donates/formulario-donates.component';
+import { ApplicationComponent } from './pages/application/application.component';
+import { FormularioApplicationComponent } from './pages/formulario-application/formulario-application.component';
 
 export const routes: Routes = [
     {
@@ -34,6 +36,14 @@ export const routes: Routes = [
             {
                 path: 'notificaciones',
                 component: NotificationsComponent
+            },
+            {
+                path: 'solicitudes',
+                component: ApplicationComponent
+            },
+            {
+                path: 'solicitud/:id',
+                component: FormularioApplicationComponent
             },
             {
                 path: 'perfil',
