@@ -1,1 +1,67 @@
-<p>profile works!</p>,
+<button class="flex items-center justify-between bg-[#1C265F] text-white py-2 px-4 rounded-full gap-2"
+    (click)="goBackForm()">
+    <mat-icon>arrow_back</mat-icon>
+    <span class="pr-2">Volver</span>
+</button>
+
+<div class="flex flex-row-reverse items-start justify-between w-full h-full gap-5 mt-5">
+    <div class=" bg-[#D9D9D9] rounded-xl h-full w-[55%] p-4">
+        <div class="flex items-center justify-start my-4 ml-4 gap-2 text-4xl text-[#646464]">
+            <span class="material-icons-outlined text-5xl">edit</span>
+            <span class="pr-2">{{titleForm}}</span>
+        </div>
+
+        <form [formGroup]="formUser" class="flex flex-wrap justify-start items-start w-full">
+            <div class="flex flex-col items-start justify-start gap-2 w-[40%] m-auto my-2">
+                <label> Nombre <span class=" text-red-600">*</span></label>
+                <input type="text" formControlName="nombre" class="w-full py-2 px-3 rounded-lg" />
+            </div>
+            <div class="flex flex-col items-start justify-start gap-2 w-[40%] m-auto my-2">
+                <label> Apellido <span class=" text-red-600">*</span></label>
+                <input type="text" formControlName="apellido" class="w-full py-2 px-3 rounded-lg" />
+            </div>
+            <div class="flex flex-col items-start justify-start gap-2 w-[40%] m-auto my-2">
+                <label> Usuario <span class=" text-red-600">*</span></label>
+                <input type="text" formControlName="usuario" class="w-full py-2 px-3 rounded-lg" />
+            </div>
+            <div class="flex flex-col items-start justify-start gap-2 w-[40%] m-auto my-2">
+                <label> Contraseña <span class=" text-red-600">*</span></label>
+                <input type="text" formControlName="password" class="w-full py-2 px-3 rounded-lg" />
+            </div>
+            <div class="flex items-center justify-start w-full ml-6">
+                <div class="flex flex-col items-start justify-start gap-2 w-[40%] my-2">
+                    <label> Rol <span class=" text-red-600">*</span></label>
+                    <select formControlName="usersRoleId" class="w-[105%] py-2 px-3 rounded-lg">
+                        @for (item of rolesData; track $index) {
+                            <option [value]="item.roles_ID">{{item.roles_nombre}}</option>
+                        }
+                        @empty {
+                            <option value="0">Cargando...</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </form>
+
+        <div class="flex items-center justify-end w-full gap-4 mt-4">
+            <button class="flex items-center justify-between bg-[#1C265F] text-white py-2 px-4 rounded-full gap-2"
+                (click)="sendFormData()">
+                <mat-icon>save</mat-icon>
+                <span class="pr-2">Actualizar</span>
+            </button>
+        </div>
+    </div>
+
+    <div class=" bg-[#D9D9D9] flex flex-col items-center justify-center rounded-xl h-full w-[40%] p-4">
+        <p>Foto de perfil</p>
+        <div class=" rounded-full bg-white h-40 w-40 mb-5"></div>
+        <p>{{userData.nombre}} {{userData.apellido}}</p>
+        <p>{{userData.usuario}}</p>
+        <br>
+        <p>{{userData.users_roles.roles_nombre}}</p>
+        <!-- <button class="flex items-center justify-between bg-[#1C265F] text-white py-2 px-4 rounded-full gap-2">
+            <span class="pr-2">Seleccione</span>
+        </button> -->
+    </div>
+
+</div>
