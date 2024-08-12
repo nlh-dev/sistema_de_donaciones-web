@@ -40,7 +40,10 @@ export class FormularioApplicationComponent extends BaseComponent implements OnI
   }
 
   ngOnInit(): void {
-    this.donateServices.getUniqueDonacionesAPI('1');
+    this.routerActive.paramMap.subscribe(params => {
+      const id = params.get('id');
+      this.donateServices.getUniqueDonacionesAPI(String(id));
+    });
   }
 
   confirmApplication(): void {

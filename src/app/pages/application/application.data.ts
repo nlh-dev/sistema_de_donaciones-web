@@ -3,19 +3,19 @@ import { IColumns } from "../../interfaces/table.interface";
 
 export const columns: IColumns<IDonations>[] = [
     {
-        title: 'Nombre',
+        title: 'Nombre y Apellido',
         name: (element) => element.donaciones_nombre_receptor,
         nameColumn: 'nombre',
         type: 'string',
         width: 'w-[30%]'
     },
-    {
-        title: 'Apellido',
-        name: (element) => element.donaciones_nombre_receptor,
-        nameColumn: 'apellido',
-        type: 'string',
-        width: 'w-[30%]'
-    },
+    // {
+    //     title: 'Apellido',
+    //     name: (element) => element.donaciones_nombre_receptor,
+    //     nameColumn: 'apellido',
+    //     type: 'string',
+    //     width: 'w-[30%]'
+    // },
     {
         title: 'Tipo de donación',
         name: (element) => element.donaciones_tipos.tipo_donaciones_nombre,
@@ -25,7 +25,7 @@ export const columns: IColumns<IDonations>[] = [
     },
     {
         title: 'Tipo de solicitud',
-        name: (element) => element.donaciones_tipos.tipo_donaciones_nombre,
+        name: (element) => 'Recibo',
         nameColumn: 'roles_nombre',
         type: 'string',
         width: 'w-[30%]'
