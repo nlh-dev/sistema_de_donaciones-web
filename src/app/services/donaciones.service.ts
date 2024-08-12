@@ -3,10 +3,9 @@ import { BaseService } from './base.service';
 import { IDonacionesTipos, IDonations } from '../interfaces/donates.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DonacionesService extends BaseService {
-
   private setDonaciones = signal<IDonations[]>([]);
   public getDonaciones = computed<IDonations[]>(() => this.setDonaciones());
 
@@ -15,13 +14,13 @@ export class DonacionesService extends BaseService {
 
   getDonacionesAPI(): void {
     this.httpClient.get<IDonations[]>(`${this.base_api_url}/donaciones`).subscribe((response: IDonations[]) => {
-      this.setDonaciones.set(response);
-    })
+        this.setDonaciones.set(response);
+      });
   }
 
   getTiposAPI(): void {
     this.httpClient.get<IDonacionesTipos[]>(`${this.base_api_url}/donaciones/tipos`).subscribe((response: IDonacionesTipos[]) => {
-      this.setTipos.set(response);
-    })
+        this.setTipos.set(response);
+      });
   }
 }

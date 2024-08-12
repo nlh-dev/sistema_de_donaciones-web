@@ -25,10 +25,10 @@
                 <label> Tipo de Insumo </label>
                 <select formControlName="almacenTipo" class="w-full py-2 px-3 rounded-lg">
                     @for (item of tiposData; track $index) {
-                    <option [value]="item.tipo_donaciones_id">{{item.tipo_donaciones_nombre}}</option>
+                        <option [value]="item.tipo_donaciones_id">{{item.tipo_donaciones_nombre}}</option>
                     }
                     @empty {
-                    <option value="">Cargando...</option>
+                        <option value="">Cargando...</option>
                     }
                     <option value="0" style="display: none;"></option>
                 </select>
