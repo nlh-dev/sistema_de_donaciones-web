@@ -25,3 +25,8 @@ export interface IDonacionesTipos {
     tipo_donaciones_id:     number;
     tipo_donaciones_nombre: string;
 }
+
+export interface IDonacionesMotivos {
+    motivo_id: number;
+    motivo:    string;
+}

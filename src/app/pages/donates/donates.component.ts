@@ -49,11 +49,11 @@ export class DonatesComponent extends BaseComponent implements OnInit{
   }
 
   openDialog(): void {
-    this.router.navigate(['/usuario/agregar'])
+    this.router.navigate(['/donaciones/agregar'])
   }
 
   editDataDialog(data: IDonations): void {
     localStorage.setItem('userEdit', JSON.stringify(data));
-    this.router.navigate(['/usuario/editar'])
+    this.router.navigate(['/donaciones/editar'])
   }
 }

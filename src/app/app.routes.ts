@@ -8,6 +8,7 @@ import { DonatesComponent } from './pages/donates/donates.component';
 import { FormularioUsuarioComponent } from './pages/formulario-usuario/formulario-usuario.component';
 import { StoreComponent } from './pages/store/store.component';
 import { FormularioStoreComponent } from './pages/formulario-store/formulario-store.component';
+import { FormularioDonatesComponent } from './pages/formulario-donates/formulario-donates.component';
 
 export const routes: Routes = [
     {
@@ -21,6 +22,14 @@ export const routes: Routes = [
             {
                 path: 'donaciones',
                 component: DonatesComponent
+            },
+            {
+                path: 'donaciones/agregar',
+                component: FormularioDonatesComponent
+            },
+            {
+                path: 'donaciones/editar',
+                component: FormularioDonatesComponent
             },
             {
                 path: 'notificaciones',
