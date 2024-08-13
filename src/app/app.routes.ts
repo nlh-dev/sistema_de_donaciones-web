@@ -11,6 +11,7 @@ import { FormularioStoreComponent } from './pages/formulario-store/formulario-st
 import { FormularioDonatesComponent } from './pages/formulario-donates/formulario-donates.component';
 import { ApplicationComponent } from './pages/application/application.component';
 import { FormularioApplicationComponent } from './pages/formulario-application/formulario-application.component';
+import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
     {
@@ -21,6 +22,10 @@ export const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
+            {
+                path: '',
+                component: HomeComponent
+            },
             {
                 path: 'donaciones',
                 component: DonatesComponent
