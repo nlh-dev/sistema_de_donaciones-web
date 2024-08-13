@@ -31,7 +31,7 @@ export const columns: IColumns<IAlmacen>[] = [
         width: 'w-[20%]'
     },
     {
-        title: 'Fecha de expiración',
+        title: 'Expiración',
         name: (element) => element.almacen_fecha_de_expiracion,
         nameColumn: 'almacen_fecha_de_expiracion',
         type: 'date',

@@ -31,19 +31,26 @@ export const columns: IColumns<IUser>[] = [
         width: 'w-[30%]'
     },
     {
+        title: 'Estado',
+        name: (element) => element.users_status,
+        nameColumn: 'states',
+        type: 'boolean',
+        width: 'w-[30%]'
+    },
+    {
         title: 'Editar',
         name: () => 'edit',
         nameColumn: 'edit',
         type: 'icon',
         icon: 'edit',
         color: 'primary'
-    },
-    {
-        title: 'Eliminar',
-        name: () => 'delete',
-        nameColumn: 'delete',
-        type: 'icon',
-        icon: 'delete',
-        color: 'warn'
     }
+    // {
+    //     title: 'Eliminar',
+    //     name: () => 'delete',
+    //     nameColumn: 'delete',
+    //     type: 'icon',
+    //     icon: 'delete',
+    //     color: 'warn'
+    // }
 ]

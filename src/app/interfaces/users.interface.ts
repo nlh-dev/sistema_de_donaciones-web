@@ -17,6 +17,7 @@ export interface IUser {
     nombre:        string;
     apellido:      string;
     users_role_id: number;
+    users_status:  boolean;
     users_roles:   IUsersRoles;
 }
 

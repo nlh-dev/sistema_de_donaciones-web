@@ -37,6 +37,17 @@
                     <td mat-cell *matCellDef="let row" [class]="item.width">{{ item.name(row) }}</td>
                 </ng-container>
                 }
+
+                @if (item.type == 'boolean') {
+                <ng-container matColumnDef="{{ item.nameColumn }}">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header [class]="styleHead(item.width)">
+                        {{ item.title }}
+                    </th>
+                    <td mat-cell *matCellDef="let row" [class]="item.width">
+                        <mat-icon [color]="item.name(row) ? 'primary' : 'warn'">{{item.name(row) ? 'check' : 'close'}}</mat-icon>
+                    </td>
+                </ng-container>
+                }
                 @if (item.type == 'date') {
                 <ng-container matColumnDef="{{ item.nameColumn }}">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header [class]="styleHead(item.width)">
