@@ -35,7 +35,7 @@ export class ApplicationComponent extends BaseComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.donacionesServices.getDonacionesAPI();
+    this.donacionesServices.getSolicitudesDonacionesAPI();
   }
 
   defectColumnAction(dataComponent: ISendDataTable): void {

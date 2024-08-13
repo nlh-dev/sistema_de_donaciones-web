@@ -50,7 +50,7 @@ export class FormularioUsuarioComponent extends BaseComponent implements OnInit,
       this.userService.getRolesAPI();
       this.dataUserEdit = JSON.parse(localStorage.getItem('userEdit') as string);
       if(this.router.url.includes('editar') && this.dataUserEdit){
-        this.titleForm = 'Editar Usuario';
+        this.titleForm = this.router.url.includes('ver') ? 'Información de Usuario' :'Editar Usuario';
         this.formUser.controls.nombre.setValue(this.dataUserEdit.nombre);
         this.formUser.controls.apellido.setValue(this.dataUserEdit.apellido);
         this.formUser.controls.usuario.setValue(this.dataUserEdit.usuario);
@@ -59,6 +59,16 @@ export class FormularioUsuarioComponent extends BaseComponent implements OnInit,
       } else{ 
         this.formUser.controls.usersRoleId.setValue(0);
       }
+  }
+
+  validateDisabled():void {
+    if(this.router.url.includes('ver')){
+      this.formUser.get('nombre')?.disable();
+      this.formUser.get('apellido')?.disable();
+      this.formUser.get('usuario')?.disable();
+      this.formUser.get('password')?.disable();
+      this.formUser.get('usersRoleId')?.disable();
+    }
   }
 
   sendFormData(): void {

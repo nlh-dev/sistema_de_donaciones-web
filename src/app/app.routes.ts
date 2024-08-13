@@ -39,6 +39,10 @@ export const routes: Routes = [
                 component: FormularioDonatesComponent
             },
             {
+                path: 'donaciones/ver',
+                component: FormularioDonatesComponent
+            },
+            {
                 path: 'notificaciones',
                 component: NotificationsComponent
             },
@@ -67,6 +71,10 @@ export const routes: Routes = [
                 component: FormularioStoreComponent
             },
             {
+                path: 'almacen/ver',
+                component: FormularioStoreComponent
+            },
+            {
                 path: 'usuario',
                 component: UsersComponent
             },
@@ -76,6 +84,10 @@ export const routes: Routes = [
             },
             {
                 path: 'usuario/editar',
+                component: FormularioUsuarioComponent
+            },
+            {
+                path: 'usuario/ver',
                 component: FormularioUsuarioComponent
             },
         ]

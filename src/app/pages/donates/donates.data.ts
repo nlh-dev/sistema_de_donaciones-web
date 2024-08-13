@@ -25,7 +25,7 @@ export const columns: IColumns<IDonations>[] = [
     },
     {
         title: 'Estado',
-        name: () => 'Estado',
+        name: (element) => element.estado.estados_nombre,
         nameColumn: 'estado',
         type: 'string',
         width: 'w-[20%]'
@@ -39,8 +39,8 @@ export const columns: IColumns<IDonations>[] = [
     },
     {
         title: 'Ver',
-        name: () => 'see',
-        nameColumn: 'see',
+        name: () => 'show',
+        nameColumn: 'show',
         type: 'icon',
         icon: 'visibility',
         color: 'primary'

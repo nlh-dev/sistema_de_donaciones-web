@@ -65,8 +65,9 @@ export class FormularioStoreComponent extends BaseComponent implements OnInit, O
 
     this.dataStoreEdit = JSON.parse(localStorage.getItem('storeEdit') as string);
 
-    if (this.router.url.includes('editar') && this.dataStoreEdit) {
-      this.titleForm = 'Editar Insumo(s)';
+    if ((this.router.url.includes('editar') || this.router.url.includes('ver')) && this.dataStoreEdit) {
+      this.titleForm = this.router.url.includes('ver')? 'Información de Insumo(s)' : 'Editar Insumo(s)';
+      this.validateDisabled();
       this.formStore.controls.almacenNombre.setValue(this.dataStoreEdit.almacen_nombre);
       this.formStore.controls.almacenCantidad.setValue(this.dataStoreEdit.almacen_cantidad);
       this.formStore.controls.almacenTipo.setValue(this.dataStoreEdit.almacen_tipo);
@@ -77,6 +78,19 @@ export class FormularioStoreComponent extends BaseComponent implements OnInit, O
     } else {
       this.formStore.controls.almacenTipo.setValue(0);
       this.formStore.controls.almacenEstado.setValue(0);
+    }
+  }
+
+  validateDisabled():void {
+    if(this.router.url.includes('ver')){
+      this.formStore.get('almacenNombre')?.disable();
+      this.formStore.get('almacenUnidadMedida')?.disable();
+      this.formStore.get('almacenCantidad')?.disable();
+      this.formStore.get('almacenTipo')?.disable();
+      this.formStore.get('almacenEstado')?.disable();
+      this.formStore.get('almacenDosis')?.disable();
+      this.formStore.get('almacenFechaExpiracion')?.disable();
+      this.formStore.get('almacenDescripcion')?.disable();
     }
   }
 
@@ -92,6 +106,9 @@ export class FormularioStoreComponent extends BaseComponent implements OnInit, O
         ...this.formStore.value,
         almacenId: this.dataStoreEdit.almacen_id
       };
+      if(this.router.url.includes('ver')){
+        return this.goBack();
+      }
       this.almacenService.putAlmacenAPI(sendStore as IBodyAlmacenEdit);
     }
     this.goBackForm();

@@ -38,6 +38,14 @@ export const columns: IColumns<IAlmacen>[] = [
         width: 'w-[20%]'
     },
     {
+        title: 'Ver',
+        name: () => 'show',
+        nameColumn: 'show',
+        type: 'icon',
+        icon: 'visibility',
+        color: 'primary'
+    },
+    {
         title: 'Editar',
         name: () => 'edit',
         nameColumn: 'edit',

@@ -21,6 +21,7 @@ export class FormularioApplicationComponent extends BaseComponent implements OnI
   donateServices = inject(DonacionesService);
   donationApplicated: IDonations = {} as IDonations;
   ref = inject(ChangeDetectorRef);
+  title: string = '';
 
   day: string = '';
   month: string = '';
@@ -30,7 +31,8 @@ export class FormularioApplicationComponent extends BaseComponent implements OnI
     super();
     effect(() => {
       this.donationApplicated = this.donateServices.getOneDonaciones();
-
+      this.title = this.donateServices.getOneDonaciones().donaciones_motivo.motivo.split(' ')[0]
+      
       const date = new Date(this.donateServices.getOneDonaciones().donaciones_fecha_alta);
       this.day = String(date.getUTCDate()).padStart(2, '0');
       this.month = String(date.getUTCMonth() + 1).padStart(2, '0');
@@ -47,10 +49,12 @@ export class FormularioApplicationComponent extends BaseComponent implements OnI
   }
 
   confirmApplication(): void {
-    console.log('Aceptar');
+    this.donateServices.putConfirmDonacionesAPI(this.donationApplicated.donaciones_ID, true);
+    this.goBack();
   }
 
-  goBackForm(): void {
+  denegateApplication(): void {
+    this.donateServices.putConfirmDonacionesAPI(this.donationApplicated.donaciones_ID, false);
     this.goBack();
   }
 }

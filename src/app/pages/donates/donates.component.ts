@@ -41,7 +41,10 @@ export class DonatesComponent extends BaseComponent implements OnInit{
       this.openDialog();
     }
     if(dataComponent.action == 'edit'){
-      this.editDataDialog(dataComponent.data);
+      this.editDataDialog(dataComponent.data, '/donaciones/editar');
+    }
+    if(dataComponent.action == 'show'){
+      this.editDataDialog(dataComponent.data, '/donaciones/ver');
     }
   }
 
@@ -49,8 +52,8 @@ export class DonatesComponent extends BaseComponent implements OnInit{
     this.router.navigate(['/donaciones/agregar'])
   }
 
-  editDataDialog(data: IDonations): void {
-    localStorage.setItem('userEdit', JSON.stringify(data));
-    this.router.navigate(['/donaciones/editar'])
+  editDataDialog(data: IDonations, redirectTo: string): void {
+    localStorage.setItem('donatesEdit', JSON.stringify(data));
+    this.router.navigate([redirectTo])
   }
 }

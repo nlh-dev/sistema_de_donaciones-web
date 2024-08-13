@@ -15,12 +15,12 @@
             <div class="flex flex-col items-start justify-start w-1/2">
                 <div class="flex flex-col items-start justify-start gap-2 w-full m-auto my-2">
                     <label> Nombre del Insumo </label>
-                    <input type="text" formControlName="almacenNombre" class="w-full py-2 px-3 rounded-lg" />
+                    <input type="text" formControlName="almacenNombre" class="w-full py-2 px-3 rounded-lg disabled:bg-gray-400" />
                 </div>
 
                 <div class="flex flex-col items-start justify-start gap-2 w-full m-auto my-2">
                     <label> Tipo de Insumo </label>
-                    <select formControlName="almacenTipo" class="w-full py-2 px-3 rounded-lg">
+                    <select formControlName="almacenTipo" class="w-full py-2 px-3 rounded-lg disabled:bg-gray-400">
                         @for (item of tiposData; track $index) {
                         <option [value]="item.tipo_donaciones_id">{{item.tipo_donaciones_nombre}}</option>
                         }
@@ -33,7 +33,7 @@
 
                 <div class="flex flex-col items-start justify-start gap-2 w-full m-auto my-2">
                     <label> Estado del Insumo </label>
-                    <select formControlName="almacenEstado" class="w-full py-2 px-3 rounded-lg">
+                    <select formControlName="almacenEstado" class="w-full py-2 px-3 rounded-lg disabled:bg-gray-400">
                         @for (item of estadosData; track $index) {
                         <option [value]="item.insumo_estado_id">{{item.insumo_estado_nombre}}</option>
                         }
@@ -47,12 +47,12 @@
                 <div class="flex items-center justify-between">
                     <div class="flex flex-col items-start justify-start gap-2 w-[30%] m-auto my-2">
                         <label> Dosis </label>
-                        <input type="number" formControlName="almacenDosis" class="w-full py-2 px-3 rounded-lg" />
+                        <input type="number" formControlName="almacenDosis" class="w-full py-2 px-3 rounded-lg disabled:bg-gray-400" />
                     </div>
 
                     <div class="flex flex-col items-start justify-start gap-2 w-[30%] m-auto my-2">
                         <label> Unidad </label>
-                        <select formControlName="almacenUnidadMedida" class="w-full py-2 px-3 rounded-lg">
+                        <select formControlName="almacenUnidadMedida" class="w-full py-2 px-3 rounded-lg disabled:bg-gray-400">
                             <option value="Mg">Mg</option>
                             <option value="g">g</option>
                             <option value="Oz">Oz</option>
@@ -61,7 +61,7 @@
 
                     <div class="flex flex-col items-start justify-start gap-2 w-[30%] m-auto my-2">
                         <label> Cantidad </label>
-                        <input type="number" formControlName="almacenCantidad" class="w-full py-2 px-3 rounded-lg" />
+                        <input type="number" formControlName="almacenCantidad" class="w-full py-2 px-3 rounded-lg disabled:bg-gray-400" />
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                 <div class="flex items-center justify-start w-full">
                     <div class="flex flex-col items-start justify-start gap-2 w-full my-2">
                         <label> Fecha de expiración </label>
-                        <mat-form-field appearance="outline" class="w-full">
+                        <mat-form-field appearance="outline" class="w-full disabled:bg-gray-400">
                             <input formControlName="almacenFechaExpiracion" matInput [matDatepicker]="picker">
                             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
@@ -81,7 +81,7 @@
                 <div class="flex flex-col items-start justify-start gap-2 w-full m-auto">
                     <label> Descripción </label>
                     <textarea formControlName="almacenDescripcion" rows="6"
-                        class="w-full py-2 px-3 rounded-lg"></textarea>
+                        class="w-full py-2 px-3 rounded-lg disabled:bg-gray-400"></textarea>
                 </div>
             </div>
         </form>

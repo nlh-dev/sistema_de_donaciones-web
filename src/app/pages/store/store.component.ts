@@ -40,8 +40,11 @@ export class StoreComponent extends BaseComponent implements OnInit {
     if(dataComponent.action == 'add'){
       this.openDialog();
     }
+    if(dataComponent.action == 'show'){
+      this.editDataDialog(dataComponent.data, '/almacen/ver');
+    }
     if(dataComponent.action == 'edit'){
-      this.editDataDialog(dataComponent.data);
+      this.editDataDialog(dataComponent.data,'/almacen/editar');
     }
     if(dataComponent.action == 'delete'){
       this.deleteData(dataComponent.data);
@@ -52,9 +55,9 @@ export class StoreComponent extends BaseComponent implements OnInit {
     this.router.navigate(['/almacen/agregar'])
   }
 
-  editDataDialog(data: IAlmacen): void {
+  editDataDialog(data: IAlmacen, redirectTo: string): void {
     localStorage.setItem('storeEdit', JSON.stringify(data));
-    this.router.navigate(['/almacen/editar'])
+    this.router.navigate([redirectTo])
   }
   deleteData(data: IAlmacen): void {
     this.almacenService.deleteAlmacenAPI(data.almacen_id.toString());

@@ -5,8 +5,9 @@
         <span class="pr-2">Volver</span>
     </button>
 
-    <div class="flex flex-col items-start justify-start gap-2 w-[20%] my-2">
-        <select formControlName="donacionesMotivoId" class="w-[105%] py-2 px-3 rounded-lg">
+    <form [formGroup]="formMotivo" class="flex flex-col items-start justify-start gap-2 w-[20%] my-2">
+        <label> Motivo</label>
+        <select formControlName="donacionesMotivoId" class="w-full bg-[#d9d9d9] py-2 px-3 rounded-lg disabled:bg-gray-400">
             <mat-label class="text-black">Motivo</mat-label>
             @for (item of motivosData; track $index) {
             <option [value]="item.motivo_id">{{item.motivo}}</option>
@@ -15,13 +16,13 @@
             <option value="0" style="display: none;">Motivo</option>
             }
         </select>
-    </div>
+    </form>
 </div>
 
 <div class=" bg-[#D9D9D9] rounded-xl h-full w-full p-4 mt-5">
     <div class="flex items-center justify-start my-4 ml-4 gap-2 text-4xl text-[#646464]">
         <span class="material-icons-outlined text-5xl">description</span>
-        <span class="pr-2">Formalizar Solicitud</span>
+        <span class="pr-2">{{title}} Solicitud</span>
     </div>
 
     <form [formGroup]="formDonates" class="flex justify-between items-start w-full">
@@ -29,12 +30,12 @@
             <div class="flex w-full">
                 <div class="flex flex-col items-start justify-start gap-2 w-[45%] m-auto my-2">
                     <label> Nombre</label>
-                    <input type="text" formControlName="donacionesNombreReceptor" class="w-full py-2 px-3 rounded-lg" />
+                    <input type="text" formControlName="donacionesNombreReceptor" class="w-full py-2 px-3 rounded-lg disabled:bg-gray-400" />
                 </div>
 
                 <div class="flex flex-col items-start justify-start gap-2 w-[45%] m-auto my-2">
                     <label> Cédula de Identidad</label>
-                    <input type="text" formControlName="donacionesCedulaReceptor" class="w-full py-2 px-3 rounded-lg" />
+                    <input type="text" formControlName="donacionesCedulaReceptor" class="w-full py-2 px-3 rounded-lg disabled:bg-gray-400" />
                 </div>
             </div>
 
@@ -42,21 +43,21 @@
                 <div class="flex justify-start w-1/2">
                     <div class="flex flex-col items-start justify-start gap-2 w-[40%] m-auto my-2">
                         <label> Edad</label>
-                        <input type="text" formControlName="donacionesEdadReceptor" class="w-full py-2 px-3 rounded-lg" />
+                        <input type="text" formControlName="donacionesEdadReceptor" class="w-full py-2 px-3 rounded-lg disabled:bg-gray-400" />
                     </div>
 
                     <div class="flex flex-col items-start justify-start gap-2 w-[40%] m-auto my-2">
                         <label> Cantidad</label>
-                        <input type="text" formControlName="donacionesAlmacenCantidad" class="w-full py-2 px-3 rounded-lg" />
+                        <input type="text" formControlName="donacionesAlmacenCantidad" class="w-full py-2 px-3 rounded-lg disabled:bg-gray-400" />
                     </div>
                 </div>
 
                 <div class="flex items-start justify-start w-[44%] ">
                     <div class="flex flex-col items-start justify-start gap-2 w-full my-2">
                         <label> Insumo Solicitado</label>
-                        <select formControlName="donacionesInsumo" class="w-[105%] py-2 px-3 rounded-lg">
+                        <select formControlName="donacionesAlmacenId" class="w-[105%] py-2 px-3 rounded-lg disabled:bg-gray-400">
                             @for (item of insumosData; track $index) {
-                            <option [value]="item.roles_ID">{{item.roles_nombre}}</option>
+                            <option [value]="item.almacen_id">{{item.almacen_nombre}}</option>
                             }
                             @empty {
                             <option value="0">Cargando...</option>
@@ -69,19 +70,19 @@
 
             <div class="flex flex-col items-start justify-start gap-2 w-[95%] m-auto my-2">
                 <label> Diagnostico </label>
-                <textarea formControlName="donacionesDiagnosticoReceptor" rows="6" class="w-full py-2 px-3 rounded-lg"></textarea>
+                <textarea formControlName="donacionesDiagnosticoReceptor" rows="6" class="w-full py-2 px-3 rounded-lg disabled:bg-gray-400"></textarea>
             </div>
         </div>
 
         <div class="flex flex-col items-start justify-start w-[40%]">
             <div class="flex flex-col items-start justify-start gap-2 w-full m-auto my-2">
                 <label> Parroquia</label>
-                <input type="text" formControlName="donacionesParroquia" class="w-full py-2 px-3 rounded-lg" />
+                <input type="text" formControlName="donacionesParroquia" class="w-full py-2 px-3 rounded-lg disabled:bg-gray-400" />
             </div>
             <div class="flex items-start justify-start w-[95%] ">
                 <div class="flex flex-col items-start justify-start gap-2 w-full my-2">
                     <label> Tipo de insumo</label>
-                    <select formControlName="donacionesTipoId" class="w-[105%] py-2 px-3 rounded-lg">
+                    <select formControlName="donacionesTipoId" class="w-[105%] py-2 px-3 rounded-lg disabled:bg-gray-400">
                         @for (item of tiposData; track $index) {
                         <option [value]="item.tipo_donaciones_id">{{item.tipo_donaciones_nombre}}</option>
                         }
@@ -94,7 +95,7 @@
             </div>
             <div class="flex flex-col items-start justify-start gap-2 w-full m-auto my-2">
                 <label> Número de Teléfono</label>
-                <input type="text" formControlName="donacionesTelefonoReceptor" class="w-full py-2 px-3 rounded-lg" />
+                <input type="text" formControlName="donacionesTelefonoReceptor" class="w-full py-2 px-3 rounded-lg disabled:bg-gray-400" />
             </div>
             <div class="flex items-center justify-start w-full">
                 <div class="flex flex-col items-start justify-start gap-2 !w-full my-2">
