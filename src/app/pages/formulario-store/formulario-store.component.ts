@@ -32,10 +32,13 @@ export class FormularioStoreComponent extends BaseComponent implements OnInit, O
   dataStoreEdit: IAlmacen | null = {} as IAlmacen;
   formStore = new FormGroup({
     almacenNombre: new FormControl('', [Validators.required]),
+    almacenUnidadMedida: new FormControl('', [Validators.required]),
     almacenCantidad: new FormControl(0, [Validators.required]),
     almacenTipo: new FormControl(0, [Validators.required]),
     almacenEstado: new FormControl(0, [Validators.required]),
-    almacenFechaExpiracion: new FormControl(new Date(), [Validators.required])
+    almacenDosis: new FormControl(0, [Validators.required]),
+    almacenFechaExpiracion: new FormControl(new Date(), [Validators.required]),
+    almacenDescripcion: new FormControl('', [Validators.required]),
   })
   tiposData: IDonacionesTipos[] = [];
   estadosData: IInsumosEstado[] = [];
@@ -69,6 +72,8 @@ export class FormularioStoreComponent extends BaseComponent implements OnInit, O
       this.formStore.controls.almacenTipo.setValue(this.dataStoreEdit.almacen_tipo);
       this.formStore.controls.almacenEstado.setValue(this.dataStoreEdit.almacen_estado);
       this.formStore.controls.almacenFechaExpiracion.setValue(this.dataStoreEdit.almacen_fecha_de_expiracion);
+      this.formStore.controls.almacenDescripcion.setValue(this.dataStoreEdit.almacen_descripcion);
+      this.formStore.controls.almacenDosis.setValue(this.dataStoreEdit.almacen_dosis);
     } else {
       this.formStore.controls.almacenTipo.setValue(0);
       this.formStore.controls.almacenEstado.setValue(0);

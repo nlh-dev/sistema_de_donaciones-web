@@ -4,7 +4,9 @@ export interface IAlmacen {
     almacen_cantidad:            number;
     almacen_tipo:                number;
     almacen_estado:              number;
+    almacen_dosis:               number;
     almacen_fecha_de_expiracion: Date;
+    almacen_descripcion:         string;
     insumos_estado:              IInsumosEstado;
     donaciones_tipos:            IDonacionesTipos;
 }
