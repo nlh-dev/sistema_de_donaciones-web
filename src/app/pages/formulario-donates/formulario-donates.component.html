@@ -116,8 +116,7 @@
                     <span class="pr-2">Cancelar</span>
                 </button>
 
-                <button class="flex items-center justify-between bg-[#1C265F] text-white py-2 px-4 rounded-full gap-2"
-                    (click)="sendFormData()">
+                <button [disabled]="!(formMotivo.valid && formDonates.valid)" class="flex items-center justify-between disabled:bg-gray-400 disabled:text-gray-200 bg-[#1C265F] text-white py-2 px-4 rounded-full gap-2" (click)="sendFormData()">
                     <mat-icon>task_alt</mat-icon>
                     <span class="pr-2">Guardar</span>
                 </button>

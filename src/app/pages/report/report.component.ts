@@ -1,29 +1,27 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, effect, inject, OnInit } from '@angular/core';
-import { MatIcon } from '@angular/material/icon';
-import { BaseComponent } from '../base/base.component';
 import { TableComponent } from '../../components/table/table.component';
-import { IColumns, ISendDataTable } from '../../interfaces/table.interface';
-import { columns } from './application.data';
+import { BaseComponent } from '../base/base.component';
 import { DonacionesService } from '../../services/donaciones.service';
 import { IDonations } from '../../interfaces/donates.interface';
+import { IColumns, ISendDataTable } from '../../interfaces/table.interface';
+import { columns } from './report.data';
 
 @Component({
-  selector: 'app-application',
+  selector: 'app-report',
   standalone: true,
   imports: [
     CommonModule,
-    MatIcon,
     TableComponent
   ],
-  templateUrl: './application.component.html',
-  styleUrl: './application.component.scss',
+  templateUrl: './report.component.html',
+  styleUrl: './report.component.scss',
 })
-export class ApplicationComponent extends BaseComponent implements OnInit{
+export class ReportComponent extends BaseComponent implements OnInit{
   columns: IColumns<IDonations>[] = columns;
   dataTable: IDonations[] = [];
-  title: string = 'Lista de Solicitudes';
-  ref = inject(ChangeDetectorRef)
+  title: string = 'Reportes de Donaciones';
+  ref = inject(ChangeDetectorRef);
   donacionesServices = inject(DonacionesService)
 
   constructor(){
@@ -35,15 +33,18 @@ export class ApplicationComponent extends BaseComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.donacionesServices.getSolicitudesDonacionesAPI();
+    this.donacionesServices.getDonacionesAPI();
   }
 
   defectColumnAction(dataComponent: ISendDataTable): void {
-    if(dataComponent.action == 'show'){
-      this.editDataDialog(dataComponent.data);
-    }
     if(dataComponent.action == 'add'){
       this.openDialog();
+    }
+    if(dataComponent.action == 'edit'){
+      this.editDataDialog(dataComponent.data, '/donaciones/editar');
+    }
+    if(dataComponent.action == 'show'){
+      this.editDataDialog(dataComponent.data, '/donaciones/ver');
     }
   }
 
@@ -51,8 +52,8 @@ export class ApplicationComponent extends BaseComponent implements OnInit{
     this.router.navigate(['/donaciones/agregar'])
   }
 
-  editDataDialog(data: IDonations ): void {
-    localStorage.setItem('application', JSON.stringify(data));
-    this.router.navigate([`/solicitud/${data.donaciones_ID}`])
+  editDataDialog(data: IDonations, redirectTo: string): void {
+    localStorage.setItem('donatesEdit', JSON.stringify(data));
+    this.router.navigate([redirectTo])
   }
 }

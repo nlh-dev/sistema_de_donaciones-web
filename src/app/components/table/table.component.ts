@@ -34,6 +34,7 @@ export class TableComponent extends BaseComponent implements OnInit, AfterViewIn
 
   @Input() columns: IColumns<any>[] = [];
   @Input() dataTable: any[] = [];
+  @Input() includeBtnAdd: boolean = true;
   @Input() title: string = '';
   @Input() iconTitle: string = '';
 

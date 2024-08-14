@@ -34,19 +34,19 @@ export class FormularioDonatesComponent extends BaseComponent implements OnInit,
   dataDonateEdit: IDonations | null = {} as IDonations;
 
   formMotivo = new FormGroup({
-    donacionesMotivoId: new FormControl(0, [Validators.required])
+    donacionesMotivoId: new FormControl('', [Validators.required])
   });
 
   formDonates = new FormGroup({
     donacionesNombreReceptor: new FormControl('', [Validators.required]),
-    donacionesCedulaReceptor: new FormControl(0, [Validators.required]),
-    donacionesEdadReceptor: new FormControl(0, [Validators.required]),
-    donacionesAlmacenCantidad: new FormControl(0, [Validators.required]),
-    donacionesAlmacenId: new FormControl(0, [Validators.required]),
+    donacionesCedulaReceptor: new FormControl('', [Validators.required]),
+    donacionesEdadReceptor: new FormControl('', [Validators.required]),
+    donacionesAlmacenCantidad: new FormControl('', [Validators.required]),
+    donacionesAlmacenId: new FormControl('', [Validators.required]),
     donacionesDiagnosticoReceptor: new FormControl('', [Validators.required]),
 
     donacionesParroquia: new FormControl('', [Validators.required]),
-    donacionesTipoId: new FormControl(0, [Validators.required]),
+    donacionesTipoId: new FormControl('', [Validators.required]),
     donacionesTelefonoReceptor: new FormControl('', [Validators.required]),
     donacionesFechaAlta: new FormControl(new Date(), [Validators.required]),
   });
@@ -79,17 +79,17 @@ export class FormularioDonatesComponent extends BaseComponent implements OnInit,
     if (this.dataDonateEdit) {
       
       this.title = this.router.url.includes('ver') ? 'Información de' : 'Editar';
-      this.formMotivo.controls.donacionesMotivoId.setValue(this.dataDonateEdit.donaciones_motivo_id);
+      this.formMotivo.controls.donacionesMotivoId.setValue(this.dataDonateEdit.donaciones_motivo_id.toString());
       this.validateDisabled();
       this.formDonates.controls.donacionesNombreReceptor.setValue(this.dataDonateEdit.donaciones_nombre_receptor);
-      this.formDonates.controls.donacionesCedulaReceptor.setValue(this.dataDonateEdit.donaciones_cedula_receptor);
-      this.formDonates.controls.donacionesEdadReceptor.setValue(this.dataDonateEdit.donaciones_edad_receptor);
-      this.formDonates.controls.donacionesAlmacenCantidad.setValue(this.dataDonateEdit.donaciones_almacen_cantidad)
-      this.formDonates.controls.donacionesAlmacenId.setValue(this.dataDonateEdit.donaciones_almacen_id);
+      this.formDonates.controls.donacionesCedulaReceptor.setValue(this.dataDonateEdit.donaciones_cedula_receptor.toString());
+      this.formDonates.controls.donacionesEdadReceptor.setValue(this.dataDonateEdit.donaciones_edad_receptor.toString());
+      this.formDonates.controls.donacionesAlmacenCantidad.setValue(this.dataDonateEdit.donaciones_almacen_cantidad.toString())
+      this.formDonates.controls.donacionesAlmacenId.setValue(this.dataDonateEdit.donaciones_almacen_id.toString());
       this.formDonates.controls.donacionesDiagnosticoReceptor.setValue(this.dataDonateEdit.donaciones_diagnostico_receptor);
 
       this.formDonates.controls.donacionesParroquia.setValue(this.dataDonateEdit.donaciones_parroquia)
-      this.formDonates.controls.donacionesTipoId.setValue(this.dataDonateEdit.donaciones_tipo_id)
+      this.formDonates.controls.donacionesTipoId.setValue(this.dataDonateEdit.donaciones_tipo_id.toString())
       this.formDonates.controls.donacionesTelefonoReceptor.setValue(this.dataDonateEdit.donaciones_telefono_receptor)
       this.formDonates.controls.donacionesFechaAlta.setValue(this.dataDonateEdit.donaciones_fecha_alta)
     }

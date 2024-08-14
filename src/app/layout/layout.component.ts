@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { classActive, classInactive, menuLayout } from './layout.data';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { IMenu } from '../interfaces/layout.interface';
+import { IMenu, TypesRoles } from '../interfaces/layout.interface';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import {MatDividerModule} from '@angular/material/divider';
@@ -36,8 +36,9 @@ export class LayoutComponent implements OnInit {
   userService = inject(UsersService);
 
   ngOnInit(): void {
+    const getUser: IUser = this.userService.getUserLocal() as IUser;
+    this.menuLayout = this.menuLayout.filter(per => per.permissess.includes(getUser.users_roles.roles_nombre as TypesRoles))
     this.setClassList(this.router.url);
-    const getUser: IUser | null = this.userService.getUserLocal();
 
     if(!getUser){
       this.router.navigate(['/login']);

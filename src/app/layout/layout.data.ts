@@ -6,49 +6,64 @@ export const menuLayout: IMenu[] = [
     redirect: '/',
     icon: 'home',
     class: '',
-    footerText: 'Pagina Principal'
+    footerText: 'Pagina Principal',
+    permissess: ['Administrador', 'Encargado General', 'Encargado de Almacen', 'Colaborador']
   },
   {
     title: 'Perfil',
     redirect: '/perfil',
     icon: 'person',
     class: '',
-    footerText: 'Configuración de Perfil'
+    footerText: 'Configuración de Perfil',
+    permissess: ['Administrador','Encargado General', 'Encargado de Almacen', 'Colaborador']
   },
   {
     title: 'separador',
     redirect: '',
     icon: '',
     class: '',
-    footerText: ''
-  },
-  {
-    title: 'Donaciones',
-    redirect: '/donaciones',
-    icon: 'bloodtype',
-    class: '',
-    footerText: 'Historial de Donaciones'
+    footerText: '',
+    permissess: ['Administrador', 'Encargado General', 'Encargado de Almacen', 'Colaborador']
   },
   {
     title: 'Solicitudes',
     redirect: '/solicitudes',
     icon: 'mail',
     class: '',
-    footerText: 'Gestión de Solicitudes'
+    footerText: 'Gestión de Solicitudes',
+    permissess: ['Administrador','Encargado General','Colaborador','Encargado de Almacen']
+  },
+  {
+    title: 'Donaciones',
+    redirect: '/donaciones',
+    icon: 'bloodtype',
+    class: '',
+    footerText: 'Historial de Donaciones',
+    permissess: ['Administrador',]
   },
   {
     title: 'Almacen',
     redirect: '/almacen',
     icon: 'inbox',
     class: '',
-    footerText: 'Gestión de Insumos'
+    footerText: 'Gestión de Insumos',
+    permissess: ['Administrador','Encargado de Almacen']
+  },
+  {
+    title: 'Reportes',
+    redirect: '/reportes',
+    icon: 'space_dashboard',
+    class: '',
+    footerText: 'Gestión de Insumos',
+    permissess: ['Administrador']
   },
   {
     title: 'Usuario',
     redirect: '/usuario',
     icon: 'group',
     class: '',
-    footerText: 'Gestión de Usuarios'
+    footerText: 'Gestión de Usuarios',
+    permissess: ['Administrador']
   }
 ];
 

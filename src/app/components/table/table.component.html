@@ -12,11 +12,11 @@
                 <mat-icon>search</mat-icon>
             </div>
 
-            <button class="flex items-center justify-center bg-[#1C265F] hover:bg-[#2235a0] text-white p-2 rounded-full"  (click)="openDialog()">
-                <mat-icon>add_circle</mat-icon>
-                <!-- <span class="material-icons-two-tone "> add_circle</span> -->
-                <!-- <span class="material-icons-two-tone "> add_circle</span> -->
-            </button>
+            @if (includeBtnAdd) {
+                <button class="flex items-center justify-center bg-[#1C265F] hover:bg-[#2235a0] text-white p-2 rounded-full"  (click)="openDialog()">
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+            }
         </div>
     </div>
 
