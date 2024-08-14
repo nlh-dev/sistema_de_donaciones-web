@@ -16,11 +16,38 @@ import { UsersService } from '../../services/users.service';
 })
 export class HomeComponent extends BaseComponent implements OnInit{
 
-  showBtns: boolean = true;
+  showBtnCreateUser: boolean = true;
+  showBtnStores: boolean = true;
+  showBtnApplication: boolean = true;
   userService = inject(UsersService)
 
   ngOnInit(): void {
-    this.showBtns = this.userService.getUserLocal()?.users_roles.roles_nombre !== 'Colaborador';
+    const getRoleUser = this.userService.getUserLocal()?.users_roles.roles_nombre;
+    if(getRoleUser == 'Administrador'){
+      this.showBtnCreateUser = true;
+      this.showBtnStores = true;
+      this.showBtnApplication = true;
+    }
+    if(getRoleUser == 'Administración'){
+      this.showBtnCreateUser = false;
+      this.showBtnStores = true;
+      this.showBtnApplication = true;
+    }
+    if(getRoleUser == 'Colaborador'){
+      this.showBtnCreateUser = false;
+      this.showBtnStores = true;
+      this.showBtnApplication = false;
+    }
+    if(getRoleUser == 'Encargado General'){
+      this.showBtnCreateUser = false;
+      this.showBtnStores = true;
+      this.showBtnApplication = false;
+    }
+    if(getRoleUser == 'Encargado de Almacen'){
+      this.showBtnCreateUser = false;
+      this.showBtnStores = true;
+      this.showBtnApplication = true;
+    }
   }
 
   goTo(router: string): void {
