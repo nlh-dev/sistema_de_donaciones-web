@@ -54,6 +54,8 @@ export class ProfileComponent extends BaseComponent implements OnInit {
     this.formUser.controls.usuario.setValue(this.userData.usuario);
     this.formUser.controls.password.setValue(this.userData.password);
     this.formUser.controls.usersRoleId.setValue(this.userData.users_role_id);
+
+    this.formUser.get('usersRoleId')?.disable()
   }
 
   sendFormData(): void {
