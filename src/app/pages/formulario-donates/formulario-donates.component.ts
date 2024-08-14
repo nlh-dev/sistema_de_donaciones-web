@@ -77,7 +77,7 @@ export class FormularioDonatesComponent extends BaseComponent implements OnInit,
 
     this.dataDonateEdit = JSON.parse(localStorage.getItem('donatesEdit') as string);
     if (this.dataDonateEdit) {
-      
+
       this.title = this.router.url.includes('ver') ? 'Información de' : 'Editar';
       this.formMotivo.controls.donacionesMotivoId.setValue(this.dataDonateEdit.donaciones_motivo_id);
       this.validateDisabled();
@@ -95,8 +95,8 @@ export class FormularioDonatesComponent extends BaseComponent implements OnInit,
     }
   }
 
-  validateDisabled():void {
-    if(this.router.url.includes('ver')){
+  validateDisabled(): void {
+    if (this.router.url.includes('ver')) {
       this.formMotivo.get('donacionesMotivoId')?.disable();
       this.formDonates.get('donacionesNombreReceptor')?.disable();
       this.formDonates.get('donacionesCedulaReceptor')?.disable();
@@ -125,7 +125,7 @@ export class FormularioDonatesComponent extends BaseComponent implements OnInit,
         ...this.formMotivo.value,
         donationId: this.dataDonateEdit.donaciones_ID
       };
-      if(this.router.url.includes('ver')){
+      if (this.router.url.includes('ver')) {
         return this.goBack();
       }
       this.donatesService.putDonacionesAPI(sendUser);

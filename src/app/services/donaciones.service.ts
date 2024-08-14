@@ -63,6 +63,13 @@ export class DonacionesService extends BaseService {
   }
 
   putDonacionesAPI(donate: IBodyDonatesEdit | any): void {
+    donate.donacionesMotivoId = Number(donate.donacionesMotivoId);
+    donate.donacionesAlmacenCantidad = Number(donate.donacionesAlmacenCantidad);
+    donate.donacionesAlmacenId = Number(donate.donacionesAlmacenId);
+    donate.donacionesEdadReceptor = Number(donate.donacionesEdadReceptor);
+    donate.donacionesCedulaReceptor = Number(donate.donacionesCedulaReceptor);
+    donate.donacionesTipoId = Number(donate.donacionesTipoId);
+
     this.httpClient.put<BaseResponse>(`${this.base_api_url}/donaciones`, donate).subscribe((response: BaseResponse) => {
       console.log(response);
     });
