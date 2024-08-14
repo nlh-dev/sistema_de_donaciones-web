@@ -81,7 +81,8 @@ export class FormularioUsuarioComponent extends BaseComponent implements OnInit,
     else {
       const sendUser = {
         ...this.formUser.value,
-        idUsers: this.dataUserEdit?.users_ID
+        idUsers: this.dataUserEdit?.users_ID,
+        active: this.dataUserEdit.users_status
       };
       this.userService.putUsersAPI(sendUser as IBodyUserEdit);
     }
