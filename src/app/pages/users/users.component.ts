@@ -5,7 +5,7 @@ import { IColumns, ISendDataTable } from '../../interfaces/table.interface';
 import { columns } from './user.data';
 import { BaseComponent } from '../base/base.component';
 import { UsersService } from '../../services/users.service';
-import { IUser } from '../../interfaces/users.interface';
+import { IChangeStatusUser, IUser } from '../../interfaces/users.interface';
 
 @Component({
   selector: 'app-users',
@@ -44,6 +44,9 @@ export class UsersComponent extends BaseComponent implements OnInit{
     if(dataComponent.action == 'edit'){
       this.editDataDialog(dataComponent.data);
     }
+    if(dataComponent.action == 'states'){
+      this.activeUser(dataComponent.data);
+    }
     if(dataComponent.action == 'delete'){
       this.deleteData(dataComponent.data);
     }
@@ -51,6 +54,14 @@ export class UsersComponent extends BaseComponent implements OnInit{
 
   openDialog(): void {
     this.router.navigate(['/usuario/agregar'])
+  }
+
+  activeUser(data: IUser): void {
+    const user: IChangeStatusUser = {
+      idUsers: data.users_ID,
+      active:!data.users_status
+    }
+    this.usersService.updateUsersStatusAPI(user);
   }
 
   editDataDialog(data: IUser): void {

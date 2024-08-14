@@ -1,6 +1,6 @@
 import { computed, Injectable, signal } from '@angular/core';
 import { BaseService } from './base.service';
-import { IBodyUser, IBodyUserEdit, IUser, IUsersRoles } from '../interfaces/users.interface';
+import { IBodyUser, IBodyUserEdit, IChangeStatusUser, IUser, IUsersRoles } from '../interfaces/users.interface';
 import { BaseResponse } from '../interfaces/base.interface';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class UsersService extends BaseService{
   private setRoles = signal<IUsersRoles[]>([]);
   public getRoles = computed<IUsersRoles[]>(() => this.setRoles());
 
-  getUserLocal(): IUser | null {
+  public getUserLocal(): IUser | null {
     return JSON.parse(localStorage.getItem('userToken') as string);
   }
 
@@ -34,12 +34,20 @@ export class UsersService extends BaseService{
     users.usersRoleId = Number(users.usersRoleId);
     this.httpClient.post<BaseResponse>(`${this.base_api_url}/users`, users).subscribe((response: BaseResponse) => {
       // console.log(response);
+      this.getUsersAPI();
+    })
+  }
+  updateUsersStatusAPI(users: IChangeStatusUser): void {
+    this.httpClient.put<BaseResponse>(`${this.base_api_url}/users/status`, users).subscribe((response: BaseResponse) => {
+      // console.log(response);
+      this.getUsersAPI();
     })
   }
   putUsersAPI(users: IBodyUserEdit): void {
     users.usersRoleId = Number(users.usersRoleId);
     this.httpClient.put<BaseResponse>(`${this.base_api_url}/users`, users).subscribe((response: BaseResponse) => {
       // console.log(response);
+      this.getUsersAPI();
     })
   }
   deleteUsersAPI(userId: string): void {

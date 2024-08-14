@@ -38,3 +38,8 @@ export interface IBodyUser {
 export interface IBodyUserEdit extends IBodyUser {
     idUsers: number;
 }
+
+export interface IChangeStatusUser {
+    idUsers: number;
+    active: boolean;
+}

@@ -32,9 +32,9 @@ export const columns: IColumns<IUser>[] = [
     },
     {
         title: 'Estado',
-        name: (element) => element.users_status,
+        name: (element) => element.users_status ? 'toggle_on' : 'toggle_off',
         nameColumn: 'states',
-        type: 'boolean',
+        type: 'iconData',
         width: 'w-[30%]'
     },
     {

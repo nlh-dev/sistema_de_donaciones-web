@@ -76,4 +76,10 @@ export class DonacionesService extends BaseService {
       console.log(response);
     });
   }
+
+  deleteDonacionesAPI(donateId: number): void {
+    this.httpClient.delete<BaseResponse>(`${this.base_api_url}/donaciones/${donateId}`).subscribe((response: BaseResponse) => {
+      this.getDonacionesAPI();
+    });
+  }
 }
