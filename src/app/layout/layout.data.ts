@@ -7,7 +7,7 @@ export const menuLayout: IMenu[] = [
     icon: 'home',
     class: '',
     footerText: 'Pagina Principal',
-    permissess: ['Administrador', 'Encargado General', 'Encargado de Almacen', 'Colaborador']
+    permissess: ['Administración','Administrador', 'Encargado General', 'Encargado de Almacen', 'Colaborador']
   },
   {
     title: 'Perfil',
@@ -15,7 +15,7 @@ export const menuLayout: IMenu[] = [
     icon: 'person',
     class: '',
     footerText: 'Configuración de Perfil',
-    permissess: ['Administrador','Encargado General', 'Encargado de Almacen', 'Colaborador']
+    permissess: ['Administración','Administrador','Encargado General', 'Encargado de Almacen', 'Colaborador']
   },
   {
     title: 'separador',
@@ -23,7 +23,7 @@ export const menuLayout: IMenu[] = [
     icon: '',
     class: '',
     footerText: '',
-    permissess: ['Administrador', 'Encargado General', 'Encargado de Almacen', 'Colaborador']
+    permissess: ['Administración','Administrador', 'Encargado General', 'Encargado de Almacen', 'Colaborador']
   },
   {
     title: 'Solicitudes',
@@ -31,7 +31,7 @@ export const menuLayout: IMenu[] = [
     icon: 'mail',
     class: '',
     footerText: 'Gestión de Solicitudes',
-    permissess: ['Administrador','Encargado General','Colaborador','Encargado de Almacen']
+    permissess: ['Administración','Administrador','Encargado General','Colaborador','Encargado de Almacen']
   },
   {
     title: 'Donaciones',
@@ -39,7 +39,7 @@ export const menuLayout: IMenu[] = [
     icon: 'bloodtype',
     class: '',
     footerText: 'Historial de Donaciones',
-    permissess: ['Administrador','Encargado General']
+    permissess: ['Administración','Administrador','Encargado General']
   },
   {
     title: 'Almacen',
@@ -47,7 +47,7 @@ export const menuLayout: IMenu[] = [
     icon: 'inbox',
     class: '',
     footerText: 'Gestión de Insumos',
-    permissess: ['Administrador','Encargado de Almacen']
+    permissess: ['Administración','Administrador','Encargado de Almacen']
   },
   {
     title: 'Reportes',
@@ -55,7 +55,7 @@ export const menuLayout: IMenu[] = [
     icon: 'space_dashboard',
     class: '',
     footerText: 'Gestión de Insumos',
-    permissess: ['Administrador']
+    permissess: ['Administración','Administrador']
   },
   {
     title: 'Usuario',

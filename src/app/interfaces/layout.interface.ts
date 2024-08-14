@@ -7,4 +7,4 @@ export interface IMenu {
     footerText: string;
 }
 
-export type TypesRoles = 'Administrador' |'Encargado General' |'Encargado de Almacen' |'Colaborador';
+export type TypesRoles = 'Administración'| 'Administrador' |'Encargado General' |'Encargado de Almacen' |'Colaborador';
