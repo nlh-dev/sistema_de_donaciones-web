@@ -39,7 +39,7 @@ export const menuLayout: IMenu[] = [
     icon: 'bloodtype',
     class: '',
     footerText: 'Historial de Donaciones',
-    permissess: ['Administrador',]
+    permissess: ['Administrador','Encargado General']
   },
   {
     title: 'Almacen',

@@ -7,6 +7,7 @@ import { IColumns, ISendDataTable } from '../../interfaces/table.interface';
 import { columns } from './application.data';
 import { DonacionesService } from '../../services/donaciones.service';
 import { IDonations } from '../../interfaces/donates.interface';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-application',
@@ -22,9 +23,11 @@ import { IDonations } from '../../interfaces/donates.interface';
 export class ApplicationComponent extends BaseComponent implements OnInit{
   columns: IColumns<IDonations>[] = columns;
   dataTable: IDonations[] = [];
+  includeBtnAdd: boolean = true;
   title: string = 'Lista de Solicitudes';
   ref = inject(ChangeDetectorRef)
-  donacionesServices = inject(DonacionesService)
+  donacionesServices = inject(DonacionesService);
+  userServices = inject(UsersService);
 
   constructor(){
     super();
@@ -35,7 +38,12 @@ export class ApplicationComponent extends BaseComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    const userToken = this.userServices.getUserLocal();
     this.donacionesServices.getSolicitudesDonacionesAPI();
+    // this.includeBtnAdd = userToken?.users_roles.roles_nombre !== 'Colaborador';
+    if(userToken?.users_roles.roles_nombre == 'Colaborador'){
+      this.columns = this.columns.filter(opt => opt.nameColumn !== 'show');
+    }
   }
 
   defectColumnAction(dataComponent: ISendDataTable): void {

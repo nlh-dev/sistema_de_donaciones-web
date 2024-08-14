@@ -49,7 +49,11 @@ export class LoginComponent extends BaseComponent implements OnInit {
       if(response.success == true){
         localStorage.setItem('userToken', JSON.stringify(response.userAuthenticate));
         setTimeout(() => {
-          this.router.navigate(['/'])
+          if( response.userAuthenticate.users_roles.roles_nombre == 'Colaborador'){
+            this.router.navigate(['/solicitudes']);
+          }else {
+            this.router.navigate(['/']);
+          }
         }, 3000);
       }
 

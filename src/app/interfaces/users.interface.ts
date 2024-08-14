@@ -1,3 +1,5 @@
+import { TypesRoles } from "./layout.interface";
+
 export interface ILogin {
     usuario: string;
     password: string;
@@ -23,7 +25,7 @@ export interface IUser {
 
 export interface IUsersRoles {
     roles_ID:     number;
-    roles_nombre: string;
+    roles_nombre: TypesRoles;
 }
 
 export interface IBodyUser {

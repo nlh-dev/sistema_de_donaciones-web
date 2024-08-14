@@ -34,7 +34,7 @@ export class FormularioDonatesComponent extends BaseComponent implements OnInit,
   dataDonateEdit: IDonations | null = {} as IDonations;
 
   formMotivo = new FormGroup({
-    donacionesMotivoId: new FormControl('', [Validators.required])
+    donacionesMotivoId: new FormControl(1, [Validators.required])
   });
 
   formDonates = new FormGroup({
@@ -79,7 +79,7 @@ export class FormularioDonatesComponent extends BaseComponent implements OnInit,
     if (this.dataDonateEdit) {
       
       this.title = this.router.url.includes('ver') ? 'Información de' : 'Editar';
-      this.formMotivo.controls.donacionesMotivoId.setValue(this.dataDonateEdit.donaciones_motivo_id.toString());
+      this.formMotivo.controls.donacionesMotivoId.setValue(this.dataDonateEdit.donaciones_motivo_id);
       this.validateDisabled();
       this.formDonates.controls.donacionesNombreReceptor.setValue(this.dataDonateEdit.donaciones_nombre_receptor);
       this.formDonates.controls.donacionesCedulaReceptor.setValue(this.dataDonateEdit.donaciones_cedula_receptor.toString());
