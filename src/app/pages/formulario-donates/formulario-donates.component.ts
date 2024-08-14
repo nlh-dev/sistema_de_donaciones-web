@@ -54,6 +54,7 @@ export class FormularioDonatesComponent extends BaseComponent implements OnInit,
   tiposData: IDonacionesTipos[] = [];
   motivosData: IDonacionesMotivos[] = [];
   insumosData: IAlmacen[] = [];
+  activeValidation: boolean = true;
   donatesService = inject(DonacionesService);
   almacenService = inject(AlmacenService);
   ref = inject(ChangeDetectorRef);
@@ -77,7 +78,6 @@ export class FormularioDonatesComponent extends BaseComponent implements OnInit,
 
     this.dataDonateEdit = JSON.parse(localStorage.getItem('donatesEdit') as string);
     if (this.dataDonateEdit) {
-
       this.title = this.router.url.includes('ver') ? 'Información de' : 'Editar';
       this.formMotivo.controls.donacionesMotivoId.setValue(this.dataDonateEdit.donaciones_motivo_id);
       this.validateDisabled();
@@ -93,6 +93,23 @@ export class FormularioDonatesComponent extends BaseComponent implements OnInit,
       this.formDonates.controls.donacionesTelefonoReceptor.setValue(this.dataDonateEdit.donaciones_telefono_receptor)
       this.formDonates.controls.donacionesFechaAlta.setValue(this.dataDonateEdit.donaciones_fecha_alta)
     }
+
+
+    this.formMotivo.get('donacionesMotivoId')?.valueChanges.subscribe(response => {
+      this.activeValidation = response == 1;
+      if(!this.activeValidation){
+        this.formDonates.get('donacionesAlmacenCantidad')?.clearValidators();
+      }
+    })
+
+    this.formDonates.get('donacionesAlmacenId')?.valueChanges.subscribe(response => {
+      const findInsumo = this.insumosData.find(ins => ins.almacen_id == Number(response));
+      if(findInsumo && this.activeValidation){
+        this.formDonates.get('donacionesAlmacenCantidad')?.setValidators([Validators.max(findInsumo.almacen_cantidad)])
+      } else {
+        this.formDonates.get('donacionesAlmacenCantidad')?.clearValidators();
+      }
+    })
   }
 
   validateDisabled(): void {
