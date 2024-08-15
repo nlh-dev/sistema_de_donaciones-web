@@ -63,7 +63,7 @@ export class DonatesComponent extends BaseComponent implements OnInit {
 
   deleteData(data: IDonations): void {
     const dataDialog = {
-        title: '¿Desea eliminar a este usuario?',
+        title: '¿Desea eliminar donación?',
         btnTextOne: 'Confirmar',
         btnTextTwo: 'Cancelar'
     };
