@@ -1,57 +1,33 @@
-import { IDonations } from "../../interfaces/donates.interface";
+import { IReport } from "../../interfaces/report.interface";
 import { IColumns } from "../../interfaces/table.interface";
 
-export const columns: IColumns<IDonations>[] = [
+export const columns: IColumns<IReport>[] = [
     {
         title: 'Fecha',
-        name: (element) => element.donaciones_fecha_alta,
-        nameColumn: 'donaciones_fecha_alta',
+        name: (element) => element.fecha,
+        nameColumn: 'fecha',
         type: 'date',
-        width: 'w-[10%]'
+        width: 'w-[20%]'
     },
     {
         title: 'Motivo',
-        name: (element) => element.donaciones_motivo.motivo,
+        name: (element) => element.datos[0].donaciones_motivo.motivo,
         nameColumn: 'motivo',
         type: 'string',
         width: 'w-[20%]'
     },
     {
         title: 'Cantidad',
-        name: (element) => element.donaciones_almacen_cantidad,
+        name: (element) => element.datos[0].donaciones_almacen_cantidad,
         nameColumn: 'donaciones_almacen_cantidad',
         type: 'string',
         width: 'w-[20%]'
     },
     {
         title: 'Codigo',
-        name: () => '000001',
+        name: (element) => element.datos[0].uniqueCode,
         nameColumn: 'tipo_donaciones_nombre',
         type: 'string',
         width: 'w-[20%]'
-    },
-    {
-        title: 'Imprimir',
-        name: () => 'show',
-        nameColumn: 'show',
-        type: 'icon',
-        icon: 'print',
-        color: 'primary'
-    },
-    {
-        title: 'Editar',
-        name: () => 'edit',
-        nameColumn: 'edit',
-        type: 'icon',
-        icon: 'edit',
-        color: 'primary'
-    },
-    {
-        title: 'Eliminar',
-        name: () => 'delete',
-        nameColumn: 'delete',
-        type: 'icon',
-        icon: 'delete',
-        color: 'warn'
     }
 ]
